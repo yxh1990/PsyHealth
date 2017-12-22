@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{15804010-95EE-40E9-9731-5503EAA75ED3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PsyHealth</RootNamespace>
+    <AssemblyName>PsyHealth</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>twi.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DynamicDataDisplay, Version=0.3.0.0, Culture=neutral, PublicKeyToken=5b7d744a7263923f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\dll\DynamicDataDisplay.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFVisifire.Charts, Version=5.1.2.0, Culture=neutral, PublicKeyToken=0cd785983078370b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\dll\WPFVisifire.Charts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Index.xaml.cs">
+      <DependentUpon>Index.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JianceWindow.xaml.cs">
+      <DependentUpon>JianceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RecordWindow.xaml.cs">
+      <DependentUpon>RecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XueXiWindow.xaml.cs">
+      <DependentUpon>XueXiWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XunlianWindow.xaml.cs">
+      <DependentUpon>XunlianWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Index.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JianceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="style\maincss.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\ChangeResolution.cs" />
+    <Compile Include="lib\ImageButton.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="style\xuexi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XueXiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XunlianWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_XDLJS_AN_JZZYL_A.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_XDL_DT.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_XCLS_LT_S_DT.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_XDLJS_DT.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_AN_CKJL_A.bmp" />
+    <Resource Include="resources\img\SPCS_AN_CKJL_B.bmp" />
+    <Resource Include="resources\img\SPCS_AN_CKJL_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_CKJL_D.bmp" />
+    <Resource Include="resources\img\SPCS_AN_CKJL_E.bmp" />
+    <Resource Include="resources\img\SPCS_AN_FHZJM_A.bmp" />
+    <Resource Include="resources\img\SPCS_AN_FHZJM_B.bmp" />
+    <Resource Include="resources\img\SPCS_AN_FHZJM_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_FHZJM_D.bmp" />
+    <Resource Include="resources\img\SPCS_AN_HXZS_A.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_AN_HXZS_B.bmp" />
+    <Resource Include="resources\img\SPCS_AN_HXZS_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_HXZS_D.bmp" />
+    <Resource Include="resources\img\SPCS_AN_QD_A.bmp" />
+    <Resource Include="resources\img\SPCS_AN_QD_B.bmp" />
+    <Resource Include="resources\img\SPCS_AN_QD_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_QD_D.bmp" />
+    <Resource Include="resources\img\SPCS_AN_QX_A.bmp" />
+    <Resource Include="resources\img\SPCS_AN_QX_B.bmp" />
+    <Resource Include="resources\img\SPCS_AN_QX_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_QX_D.bmp" />
+    <Resource Include="resources\img\SPCS_AN_TC_A.bmp" />
+    <Resource Include="resources\img\SPCS_AN_TC_B.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_AN_TC_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_TC_D.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XDLJS_A.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XDLJS_B.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XDLJS_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XDLJS_D.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XLCLS_A.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XLCLS_B.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XLCLS_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XLCLS_D.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XLZX_A.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XLZX_B.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XLZX_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_XLZX_D.bmp" />
+    <Resource Include="resources\img\SPCS_AN_X_A.bmp" />
+    <Resource Include="resources\img\SPCS_AN_X_B.bmp" />
+    <Resource Include="resources\img\SPCS_AN_X_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_X_D.bmp" />
+    <Resource Include="resources\img\SPCS_AN_YD_A.bmp" />
+    <Resource Include="resources\img\SPCS_AN_YD_B.bmp" />
+    <Resource Include="resources\img\SPCS_AN_YD_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_YY_A.bmp" />
+    <Resource Include="resources\img\SPCS_AN_YY_B.bmp" />
+    <Resource Include="resources\img\SPCS_AN_YY_C.bmp" />
+    <Resource Include="resources\img\SPCS_AN_YY_D.bmp" />
+    <Resource Include="resources\img\SPCS_CKJL_LT_DT.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_AN_GY_A.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_AN_GY_B.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_XLJG_AN_SC_B.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_AN_SC_C.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_AN_SC_D.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_AN_TC_A.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_AN_TC_B.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_AN_TC_C.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_AN_TC_D.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_CT_H.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_CT_QXTJ.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_CT_QXWD.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_CT_WZK.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_CT_YL.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_CT_ZHPD.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_LTAN_GZ_A.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_LTAN_GZ_B.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_LTAN_GZ_C.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_LTAN_GZ_D.bmp" />
+    <Resource Include="resources\img\SPCS_XLJL_DT.bmp" />
+    <Resource Include="resources\img\SPCS_XLJL_XDT_DYG.bmp" />
+    <Resource Include="resources\img\SPCS_XLJL_XDT_JYFB.bmp" />
+    <Resource Include="resources\img\SPCS_XLJL_XDT_PTS.bmp" />
+    <Resource Include="resources\img\SPCS_XLJL_XDT_SJ.bmp" />
+    <Resource Include="resources\img\SPCS_XLJL_XDT_XLCLS.bmp" />
+    <Resource Include="resources\img\SPCS_XLJL_XDT_XLNR.bmp" />
+    <Resource Include="resources\img\SPCS_XLZX_DT.bmp" />
+    <Resource Include="resources\img\SPCS_XLZX_YST_JYFB.bmp" />
+    <Resource Include="resources\img\SPCS_XLZX_YST_PTS.bmp" />
+    <Resource Include="resources\img\SPCS_XLZX_YST_SJ.bmp" />
+    <Resource Include="resources\img\SPCS_XLZX_YST_XLSQ.bmp" />
+    <Resource Include="resources\img\SPCS_XLZX_YST_XLZX.bmp" />
+    <Resource Include="resources\img\SPCS_XTZTDBT_DT.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_XLCLS_AN_HRV_A.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_HRV_B.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_HRV_C.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_HRV_D.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_JT_A.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_JT_B.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_JT_C.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_JT_D.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_KS_A.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_KS_B.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_KS_C.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_KS_D.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_SZ_A.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_SZ_B.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_SZ_C.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_SZ_D.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_TZ_A.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_TZ_B.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_TZ_C.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_TZ_D.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_XZ_A.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_XZ_B.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_XZ_C.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_AN_XZ_D.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_DT.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_XZ_B.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_XZ_G.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_XZ_H.bmp" />
+    <Resource Include="resources\img\SPCS_XLCLS_XZ_R.bmp" />
+    <Resource Include="resources\img\SPCS_XLJG_AN_SC_A.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_XDLJS_AN_QGZY_D.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_SHX_A.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_SHX_B.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_SHX_C.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_SHX_D.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_TZ_A.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_TZ_B.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_TZ_C.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_TZ_D.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_ZZPHSBF_A.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_ZZPHSBF_B.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_ZZPHSBF_C.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_ZZPHSBF_D.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_LT_AN_A.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_LT_AN_B.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_LT_AN_C.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_LT_AN_D.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_LT_LS_A.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_LT_PT_A.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_SPTP_A.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_SPTP_B.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_SPTP_C.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_SPTP_D.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_SZ_DKAN_YYXZ_A.bmp" />
+    <Resource Include="resources\img\SPCS_SZ_DKAN_YYXZ_B.bmp" />
+    <Resource Include="resources\img\SPCS_SZ_DKAN_YYXZ_C.bmp" />
+    <Resource Include="resources\img\SPCS_SZ_DKAN_YYXZ_D.bmp" />
+    <Resource Include="resources\img\SPCS_SZ_DT.bmp" />
+    <Resource Include="resources\img\SPCS_SZ_YLLT_LS.bmp" />
+    <Resource Include="resources\img\SPCS_SZ_YLLT_PT.bmp" />
+    <Resource Include="resources\img\SPCS_TCK_DT_ABOUT.bmp" />
+    <Resource Include="resources\img\SPCS_TCK_DT_CJGRYH.bmp" />
+    <Resource Include="resources\img\SPCS_TCK_DT_CWCZXX.bmp" />
+    <Resource Include="resources\img\SPCS_TCK_DT_HXZS.bmp" />
+    <Resource Include="resources\img\SPCS_TCK_DT_JLXQ.bmp" />
+    <Resource Include="resources\img\SPCS_TCK_DT_SCCYH.bmp" />
+    <Resource Include="resources\img\SPCS_TCK_DT_SCDTJL.bmp" />
+    <Resource Include="resources\img\SPCS_TCK_DT_TCXT.bmp" />
+    <Resource Include="resources\img\SPCS_TCK_DT_XZDLYH.bmp" />
+    <Resource Include="resources\img\SPCS_XCLS_LT_H_DT.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_JZZYL_B.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_JZZYL_C.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_JZZYL_D.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_KS_A.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_KS_B.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_KS_C.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_KS_D.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_QGZY_A.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_QGZY_B.bmp" />
+    <Resource Include="resources\img\SPCS_XDLJS_AN_QGZY_C.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_DLJM_AN_GY_C.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_AN_GY_D.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_AN_TCXT_A.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_AN_TCXT_B.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_AN_TCXT_C.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_AN_TCXT_D.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_AN_XZYH_A.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_AN_XZYH_B.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_AN_XZYH_C.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_AN_XZYH_D.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_YHXZAN_A.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_YHXZAN_B.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_YHXZAN_C.bmp" />
+    <Resource Include="resources\img\SPCS_DLJM_YHXZAN_D.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_JYFB_A.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_JYFB_B.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_JYFB_C.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_JYFB_D.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_PTS_A.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_PTS_B.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_PTS_C.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_PTS_D.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_SJ_A.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_SJ_B.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_SJ_C.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_SJ_D.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_ZYG_A.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_ZYG_B.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_ZYG_C.bmp" />
+    <Resource Include="resources\img\SPCS_HUB_YXXZ_ZYG_D.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_AN_QHZS_A.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_AN_QHZS_B.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_AN_QHZS_C.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_AN_QHZS_D.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_AN_TC_A.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_AN_TC_B.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_AN_TC_C.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_AN_TC_D.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_CQ.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_GG.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_A.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_B.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_C.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_D.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_S_A.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_S_B.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_S_C.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_S_D.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_X_A.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_X_B.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_X_C.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_X_D.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_Y_A.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_Y_B.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_Y_C.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_Y_D.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_Z_A.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_Z_B.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_Z_C.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_LTAN_Z_D.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\img\SPCS_HXZS_SL.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_SZ.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_YH.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_YLLT_LS.bmp" />
+    <Resource Include="resources\img\SPCS_HXZS_YLLT_PT.bmp" />
+    <Resource Include="resources\img\SPCS_JLXQ_LT_DT.bmp" />
+    <Resource Include="resources\img\SPCS_JLXQ_XTZTBL_DT.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\twi.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="twi.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\dll\DynamicDataDisplay.dll" />
+    <Content Include="lib\dll\WPFVisifire.Charts.dll" />
+    <Content Include="resources\mp3\background.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\video\attention.AVI">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\video\breathe.AVI">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\video\emotion.AVI">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\video\huxi_chuiqiu.avi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\video\huxi_gangguang.avi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\video\huxi_shalou.avi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\video\huxi_shanzi.avi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

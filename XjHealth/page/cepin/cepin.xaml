@@ -1,0 +1,39 @@
+﻿<Page x:Class="XjHealth.page.cepin.cepin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XjHealth.page.cepin"
+        xmlns:locallib="clr-namespace:XjHealth.lib"
+        mc:Ignorable="d"
+        Title="心际之芯" Width="1366" Height="768">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/style/maincss.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Page.Background>
+        <!--页面整体背景图片-->
+        <ImageBrush ImageSource="/resource/img/scale_third.png"  Stretch="Fill"></ImageBrush>
+    </Page.Background>
+    <Canvas>
+        <!--测试答题-->
+        <StackPanel Width="935" Height="425" Canvas.Left="190" Canvas.Top="200">
+            <Label Style="{StaticResource ScaleTitle}" HorizontalAlignment="Left" Foreground="Black" Padding="100,0,0,0" Width="600" FontSize="18">1. 我比平时容易紧张或着急</Label>
+            <DockPanel Width="930" Height="60" Margin="50,10,10,30">
+                <locallib:ImageButton ImgPath="/resource/img/scale_option.png" MouseOverImgPath="/resource/img/scale_option.png" Template="{StaticResource ImageButtonTemplate}" Content="A. 没有或很少时间有" Width="396" Height="31" Cursor="Hand" Foreground="White" FontSize="18" Click="ImageButton_Click"></locallib:ImageButton>
+                <locallib:ImageButton ImgPath="/resource/img/scale_option.png" MouseOverImgPath="/resource/img/scale_option.png" Template="{StaticResource ImageButtonTemplate}" Content="B. 有时有" Width="396" Height="31" Cursor="Hand" Foreground="White" FontSize="18"></locallib:ImageButton>
+            </DockPanel>
+            <DockPanel  Width="930" Height="60" Margin="50,10,10,10">
+                <locallib:ImageButton ImgPath="/resource/img/scale_option.png" MouseOverImgPath="/resource/img/scale_option.png" Template="{StaticResource ImageButtonTemplate}" Content="C. 大部分时间有" Width="396" Height="31" Cursor="Hand" Foreground="White" FontSize="18"></locallib:ImageButton>
+                <locallib:ImageButton ImgPath="/resource/img/scale_option.png" MouseOverImgPath="/resource/img/scale_option.png" Template="{StaticResource ImageButtonTemplate}" Content="D. 几乎全部时间都有" Width="396" Height="31" Cursor="Hand" Foreground="White" FontSize="18"></locallib:ImageButton>
+            </DockPanel>
+        </StackPanel>
+        <Label Foreground="#7EB300" FontSize="16" FontWeight="Bold" Canvas.Top="590" Canvas.Left="230">进行时间:1小时1分1秒</Label>
+        <Label Foreground="#7EB300" FontSize="16" FontWeight="Bold" Canvas.Top="590" Canvas.Left="1050">序号:2/20</Label>
+        <!--返回主页-->
+        <locallib:ImageButton Canvas.Top="680" Canvas.Left="1050"  Width="134" Height="39" ImgPath="/resource/img/exit_index.png" MouseOverImgPath="/resource/img/exit_index.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_backmain" Click="btn_backmain_Click" Cursor="Hand" />
+    </Canvas>
+</Page>

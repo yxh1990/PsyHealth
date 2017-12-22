@@ -1,0 +1,160 @@
+﻿<Page x:Class="XjHealth.page.Index"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XjHealth.page"
+        xmlns:locallib="clr-namespace:XjHealth.lib"
+        mc:Ignorable="d"
+        Title="心际之芯" Width="1366" Height="768">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/style/maincss.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Page.Background>
+        <ImageBrush ImageSource="/resource/img/index.png"  Stretch="Fill"></ImageBrush>
+    </Page.Background>
+    <Canvas>
+
+        <!--用户登录状态显示-->
+        <StackPanel Canvas.Top="5" Canvas.Left="950" Orientation="Horizontal" VerticalAlignment="Top">
+            <Label VerticalAlignment="Center"  Style="{StaticResource loginstate}">欢迎您</Label>
+            <Image Source="/resource/img/guest.png" Width="16" Height="20" />
+            <Label VerticalAlignment="Center" Style="{StaticResource loginstate}" x:Name="lbl_username">游客</Label>
+            <Label VerticalAlignment="Center" Style="{StaticResource loginstate}" x:Name="lbl_time">时间:2017年4月17日</Label>
+            <locallib:ImageButton x:Name="btn_usertologin" ImgPath="/resource/img/top_login.png" MouseOverImgPath="/resource/img/top_login.png" Template="{StaticResource ImageButtonTemplate}" Click="btn_usertologin_Click" Width="30" Height="30" Cursor="Hand" Margin="10,0,0,0"></locallib:ImageButton>
+            <Button Foreground="White" Content="退出登录" Cursor="Hand" x:Name="btn_userlogout"  Width="60" Height="30"  Style="{StaticResource TransparentButtonStyle}" Click="Button_Click" Visibility="Hidden"></Button>
+        </StackPanel>
+
+        <!--七个图标按钮-->
+        <locallib:ImageButton Canvas.Top="460" Canvas.Left="200"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_scale_A.png" MouseOverImgPath="/resource/img/index_scale_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_cepin" Click="btn_cepin_Click" />
+        <locallib:ImageButton Canvas.Top="320" Canvas.Left="280"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_learn_A.png" MouseOverImgPath="/resource/img/index_learn_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_xuexi" Click="btn_xuexi_Click" />
+        <locallib:ImageButton Canvas.Top="220" Canvas.Left="420"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_monitor_A.png" MouseOverImgPath="/resource/img/index_monitor_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_jiance" Click="btn_jiance_Click" />
+        <locallib:ImageButton Canvas.Top="180" Canvas.Left="590"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_train_A.png" MouseOverImgPath="/resource/img/index_train_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_xunlian" Click="btn_xunlian_Click" />
+        <locallib:ImageButton Canvas.Top="210" Canvas.Left="760"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_relax_A.png" MouseOverImgPath="/resource/img/index_relax_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_fangsong" Click="btn_fangsong_Click" />
+        <locallib:ImageButton Canvas.Top="300" Canvas.Left="920"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_record_A.png" MouseOverImgPath="/resource/img/index_record_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_jilu" Click="btn_jilu_Click" />
+        <locallib:ImageButton Canvas.Top="430" Canvas.Left="1050"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_user_A.png" MouseOverImgPath="/resource/img/index_user_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_geren" Click="btn_geren_Click"/>
+
+        <!--弹出用户登录窗口-->
+        <StackPanel Canvas.Top="0" Canvas.Left="0" x:Name="loginwindow" Visibility="Hidden">
+            <Canvas>
+                <Grid Width="1366" Height="768" Opacity="0.3" Panel.ZIndex="10" Canvas.Top="0" Canvas.Left="0">
+                    <Grid.Background>
+                        <SolidColorBrush Color="Black"></SolidColorBrush>
+                    </Grid.Background>
+                </Grid>
+                <Image Source="/resource/img/login.png" Canvas.Top="280" Canvas.Left="520" Panel.ZIndex="15" Width="320" Height="244"></Image>
+                <locallib:ImageButton Canvas.Top="285" Canvas.Left="825"  Width="12" Height="12" Panel.ZIndex="15" ImgPath="/resource/img/login_exit.png" MouseOverImgPath="/resource/img/login_exit.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_exitlogin" Click="btn_exitlogin_Click" Cursor="Hand" />
+                <TextBlock Panel.ZIndex="15" Canvas.Top="375" Canvas.Left="560" Width="60">用户名</TextBlock>
+                <TextBox Panel.ZIndex="15" Canvas.Top="370" Canvas.Left="620" Width="120" Height="30" BorderThickness="0" VerticalContentAlignment="Center" x:Name="txtusername"></TextBox>
+                <TextBlock Panel.ZIndex="15" Canvas.Top="420" Canvas.Left="560"  Width="60">密  码</TextBlock>
+                <PasswordBox Panel.ZIndex="15" Canvas.Top="420" Canvas.Left="620" Width="120" Height="30" BorderThickness="0" VerticalContentAlignment="Top" x:Name="txtpassword" Style="{StaticResource loginpass}"></PasswordBox>
+                <locallib:ImageButton Panel.ZIndex="15" Canvas.Top="480" Canvas.Left="550"  Width="71" Height="29" ImgPath="/resource/img/login_btn.png" MouseOverImgPath="/resource/img/login_btn.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_login"  Cursor="Hand"  Click="btn_login_Click" IsDefault="True"/>
+                <locallib:ImageButton Panel.ZIndex="15" Canvas.Top="480" Canvas.Left="740"  Width="71" Height="29" ImgPath="/resource/img/login_reset.png" MouseOverImgPath="/resource/img/login_reset.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_reset"   Cursor="Hand" Click="btn_reset_Click" />
+            </Canvas>
+        </StackPanel>
+
+        <!--弹出用户退出窗口-->
+        <StackPanel Canvas.Top="0" Canvas.Left="0" x:Name="loginoutwindow" Visibility="Hidden">
+            <Canvas>
+                <Grid Width="1366" Height="768" Opacity="0.3" Panel.ZIndex="10" Canvas.Top="0" Canvas.Left="0">
+                    <Grid.Background>
+                        <SolidColorBrush Color="Black"></SolidColorBrush>
+                    </Grid.Background>
+                </Grid>
+                <Image Source="/resource/img/exitBg.png" Canvas.Top="280" Canvas.Left="520" Panel.ZIndex="15" Width="320" Height="149"></Image>
+                <locallib:ImageButton Canvas.Top="380" Canvas.Left="565"  Width="71" Height="29" Panel.ZIndex="15" ImgPath="/resource/img/exitSure.png" MouseOverImgPath="/resource/img/exitSure.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_exitok"  Cursor="Hand" Click="btn_exitok_Click" />
+                <locallib:ImageButton Canvas.Top="380" Canvas.Left="725"  Width="71" Height="29" Panel.ZIndex="15" ImgPath="/resource/img/exitCancel.png" MouseOverImgPath="/resource/img/exitCancel.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_exitcancle"   Cursor="Hand" Click="btn_exitcancle_Click" />
+            </Canvas>
+        </StackPanel>
+
+        <!--个人中心窗口-->
+        <StackPanel Canvas.Top="0" Canvas.Left="0" x:Name="userinfowindow" Visibility="Hidden">
+            <Canvas>
+                <Grid Width="1366" Height="768" Opacity="0.3" Panel.ZIndex="10" Canvas.Top="0" Canvas.Left="0">
+                    <Grid.Background>
+                        <SolidColorBrush Color="Black"></SolidColorBrush>
+                    </Grid.Background>
+                </Grid>
+                <Image Source="/resource/img/user_msg_bg.png" Canvas.Top="120" Canvas.Left="420" Panel.ZIndex="15" Width="533" Height="540"></Image>
+                <!--个人信息显示-->
+                <StackPanel Canvas.Top="180" Canvas.Left="480" Panel.ZIndex="15" x:Name="grid_userinfo">
+                    <Grid Width="300" Height="500">
+                        <!--定义了两列-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--定义了八行-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition Height="36"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0"  TextAlignment="Center" Text="用户名："/>
+                        <TextBlock Grid.Row="1" Grid.Column="0"  TextAlignment="Center" Text="编   号："/>
+                        <TextBlock Grid.Row="2" Grid.Column="0"  TextAlignment="Center" Text="姓   名："/>
+                        <TextBlock Grid.Row="3" Grid.Column="0"  TextAlignment="Center" Text="性   别："/>
+                        <TextBlock Grid.Row="4" Grid.Column="0"  TextAlignment="Center" Text="民   族："/>
+                        <TextBlock Grid.Row="5" Grid.Column="0"  TextAlignment="Center" Text="年   龄："/>
+                        <TextBlock Grid.Row="6" Grid.Column="0"  TextAlignment="Center" Text="教   育："/>
+                        <TextBlock Grid.Row="7" Grid.Column="0"  TextAlignment="Center" Text="角   色："/>
+
+                        <TextBlock Grid.Row="0" Grid.Column="1"  TextAlignment="Left" Text="" x:Name="txt_username"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1"  TextAlignment="Left" Text="" x:Name="txt_code"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1"  TextAlignment="Left" Text="" x:Name="txt_logonName"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1"  TextAlignment="Left" Text="" x:Name="txt_sex" />
+                        <TextBlock Grid.Row="4" Grid.Column="1"  TextAlignment="Left" Text="" x:Name="txt_nation"/>
+                        <TextBlock Grid.Row="5" Grid.Column="1"  TextAlignment="Left" Text="" x:Name="txt_age"/>
+                        <TextBlock Grid.Row="6" Grid.Column="1"  TextAlignment="Left" Text="" x:Name="txt_edu"/>
+                        <TextBlock Grid.Row="7" Grid.Column="1"  TextAlignment="Left" Text="" x:Name="txt_role"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Canvas.Top="180" Canvas.Left="480" Panel.ZIndex="15" x:Name="grid_changepasswd" Visibility="Hidden">
+                    <Grid Width="400" Height="400" VerticalAlignment="Center">
+                        <!--定义了两列-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <!--定义了三行-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0"  TextAlignment="Center" Text="原密码："/>
+                        <TextBlock Grid.Row="1" Grid.Column="0"  TextAlignment="Center" Text="修改密码："/>
+                        <TextBlock Grid.Row="2" Grid.Column="0"  TextAlignment="Center" Text="确认密码："/>
+                        <PasswordBox Style="{StaticResource changepass}" Grid.Row="0" Grid.Column="1" Width="290" Height="36" BorderThickness="0" VerticalContentAlignment="Center" x:Name="txtoldpasswd"></PasswordBox>
+                        <PasswordBox Style="{StaticResource changepass}" Grid.Row="1" Grid.Column="1" Width="290" Height="36" BorderThickness="0" VerticalContentAlignment="Center" x:Name="txtnewpasswd1"></PasswordBox>
+                        <PasswordBox Style="{StaticResource changepass}" Grid.Row="2" Grid.Column="1" Width="290" Height="36" BorderThickness="0" VerticalContentAlignment="Center" x:Name="txtnewpasswd2"></PasswordBox>
+                        <locallib:ImageButton Margin="30,5,5,5" Grid.Row="4" Grid.Column="0"  Width="71" Height="29" Cursor="Hand"  ImgPath="/resource/img/exitSure.png" MouseOverImgPath="/resource/img/exitSure.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_updatepass" Click="btn_updatepass_Click"/>
+                        <locallib:ImageButton Margin="200,5,5,5" Grid.Row="4" Grid.Column="1"  Width="71" Height="29" Cursor="Hand" ImgPath="/resource/img/exitCancel.png" MouseOverImgPath="/resource/img/exitCancel.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_cancelupdatepass" Click="btn_cancelupdatepass_Click" />
+                    </Grid>
+                </StackPanel>
+                
+                <!--三个按钮-->
+                <Image Source="/resource/img/user_tab_bg2.png" Canvas.Top="610" Canvas.Left="455" Panel.ZIndex="15" Width="275" Height="30" x:Name="btntoolbar1"></Image>
+                <locallib:ImageButton Panel.ZIndex="15" Canvas.Top="613" Canvas.Left="586"  Width="125" Height="25" ImgPath="/resource/img/user_tab_B.png" MouseOverImgPath="/resource/img/user_tab_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_userchangepass" Cursor="Hand" Click="btn_userchangepass_Click" />
+
+                <Image Source="/resource/img/user_tab_bg1.png" Canvas.Top="610" Canvas.Left="455" Panel.ZIndex="15" Width="275" Height="30" x:Name="btntoolbar2" Visibility="Hidden"></Image>
+                <locallib:ImageButton Panel.ZIndex="15" Canvas.Top="612" Canvas.Left="470"  Width="125" Height="27" ImgPath="/resource/img/user_tab_A.png" MouseOverImgPath="/resource/img/user_tab_A.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_userinfo" Cursor="Hand" Visibility="Hidden" Click="btn_userinfo_Click" />
+                <!--退出-->
+                <locallib:ImageButton Panel.ZIndex="15" Canvas.Top="610" Canvas.Left="850"  Width="71" Height="29" ImgPath="/resource/img/user_exit.png" MouseOverImgPath="/resource/img/user_exit.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_userinfoexit"   Cursor="Hand"  Click="btn_userinfoexit_Click"/>
+            </Canvas>
+        </StackPanel>
+
+    </Canvas>
+</Page>

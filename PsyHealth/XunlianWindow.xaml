@@ -1,0 +1,39 @@
+﻿<Page x:Class="PsyHealth.XunlianWindow"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PsyHealth"
+        xmlns:locallib="clr-namespace:PsyHealth.lib"
+        mc:Ignorable="d"
+        Title="JianceWindow" Width="1024" Height="760">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/style/maincss.xaml"/>
+                <ResourceDictionary Source="/style/xuexi.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Page.Background>
+        <ImageBrush ImageSource="/resources/img/SPCS_XLZX_DT.bmp"  Stretch="Fill"></ImageBrush>
+    </Page.Background>
+    <Canvas>
+        <!--图片轮播-->
+        <Image x:Name="gamepic" Canvas.Top="130"  Canvas.Left="62"  Source="/resources/img/SPCS_XLZX_YST_XLZX.bmp" Width="599" Height="393" />
+        <!--四个游戏-->
+        <locallib:ImageButton Canvas.Top="160" Canvas.Left="800"  Width="110" Height="26" ImgPath="/resources/img/SPCS_HUB_YXXZ_PTS_A.bmp" MouseOverImgPath="/resources/img/SPCS_HUB_YXXZ_PTS_B.bmp" Template="{StaticResource ImageButtonTemplate}" x:Name="btn_puti" MouseEnter="btn_puti_MouseEnter"/>
+        <locallib:ImageButton Canvas.Top="200" Canvas.Left="800"  Width="110" Height="26" ImgPath="/resources/img/SPCS_HUB_YXXZ_SJ_A.bmp" MouseOverImgPath="/resources/img/SPCS_HUB_YXXZ_SJ_B.bmp" Template="{StaticResource ImageButtonTemplate}" x:Name="btn_shejian" MouseEnter="btn_shejian_MouseEnter"/>
+        <locallib:ImageButton Canvas.Top="240" Canvas.Left="800"  Width="110" Height="26" ImgPath="/resources/img/SPCS_HUB_YXXZ_JYFB_A.bmp" MouseOverImgPath="/resources/img/SPCS_HUB_YXXZ_JYFB_B.bmp" Template="{StaticResource ImageButtonTemplate}" x:Name="btn_fb" MouseEnter="btn_fb_MouseEnter"/>
+        <locallib:ImageButton Canvas.Top="280" Canvas.Left="800"  Width="110" Height="26" ImgPath="/resources/img/SPCS_HUB_YXXZ_ZYG_A.bmp" MouseOverImgPath="/resources/img/SPCS_HUB_YXXZ_ZYG_B.bmp" Template="{StaticResource ImageButtonTemplate}" x:Name="btn_sq" MouseEnter="btn_sq_MouseEnter"/>
+        
+        <!--四个主菜单-->
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="75"  Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_XDLJS_A.bmp" MouseOverImgPath="/resources/img/SPCS_AN_XDLJS_B.bmp" Template="{StaticResource ImageButtonTemplate}" x:Name="btn_xuexi" Click="btn_xuexi_Click"/>
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="240" Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_XLCLS_A.bmp" MouseOverImgPath="/resources/img/SPCS_AN_XLCLS_B.bmp" Template="{StaticResource ImageButtonTemplate}" x:Name="btn_jiance" Click="btn_jiance_Click"/>
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="405" Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_XLZX_C.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_XLZX_C.bmp"  Template="{StaticResource ImageButtonTemplate}" />
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="565" Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_CKJL_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_CKJL_B.bmp"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_jilu" Click="btn_jilu_Click"/>
+
+        <!-- 返回主页面按钮 -->
+        <locallib:ImageButton Canvas.Top="690" Canvas.Left="832" Width="136" Height="40" ImgPath="/resources/img/SPCS_AN_FHZJM_A.bmp"   MouseOverImgPath="/resources/img/SPCS_AN_FHZJM_B.bmp" Template="{StaticResource ImageButtonTemplate}" x:Name="Btn_backIndex" Click="Btn_backIndex_Click" />
+    </Canvas>
+    </Page>

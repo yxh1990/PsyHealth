@@ -1,0 +1,68 @@
+﻿<Page x:Class="XjHealth.page.relax.relaxmain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XjHealth.page.relax"
+        xmlns:locallib="clr-namespace:XjHealth.lib"
+        mc:Ignorable="d"
+        Title="心际之芯" Width="1366" Height="768" Loaded="Page_Loaded">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/style/maincss.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Page.Background>
+        <ImageBrush ImageSource="/resource/img/relax_third.png"  Stretch="Fill"></ImageBrush>
+    </Page.Background>
+    <Canvas>
+        <StackPanel  Canvas.Left="550" Canvas.Top="260" x:Name="minxiangpanel">
+            <Label Margin="120,20,5,5" HorizontalAlignment="Left" Foreground="White" FontSize="26" FontWeight="Bold">心灵休憩</Label>
+            <TextBlock Width="500" Height="100" Margin="122,10,5,5" HorizontalAlignment="Left" Foreground="White" FontSize="14" TextWrapping="Wrap">
+                时长：05:00 <LineBreak/> 
+                请戴上耳机，或打开音箱。<LineBreak/> 
+                请全身放松，坐在椅子上，调整坐姿，直到感觉最好最舒服为止。现在可以闭上眼睛，倾听着我们的声音，请跟着我的频率呼吸。
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel  Canvas.Left="550" Canvas.Top="260" x:Name="jrfspanel" Visibility="Hidden">
+            <Label Margin="120,20,5,5" HorizontalAlignment="Left" Foreground="White" FontSize="26" FontWeight="Bold">知觉重现</Label>
+            <TextBlock Width="500" Height="100" Margin="122,10,5,5" HorizontalAlignment="Left" Foreground="White" FontSize="14" TextWrapping="Wrap">
+                时长：05:00 <LineBreak/> 
+                请戴上耳机，或打开音箱，注意聆听语音指导。<LineBreak/> 
+                请坐在舒适的椅子上，后背稍微倾斜，脚着地，手臂放在大腿或椅子扶手上。
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel  Canvas.Left="550" Canvas.Top="207" x:Name="yyfspanel" Visibility="Hidden">
+            <Label Margin="120,5,5,5" HorizontalAlignment="Left" Foreground="White" FontSize="26" FontWeight="Bold">桃花源记</Label>
+            <TextBlock Width="500" Height="35" Margin="122,0,0,0" HorizontalAlignment="Left" Foreground="White" FontSize="14" TextWrapping="Wrap">
+                时长：05:00 <LineBreak/> 
+                请戴上耳机，或打开音箱
+            </TextBlock>
+            <Label Margin="120,3,5,5" HorizontalAlignment="Left" Foreground="White" FontSize="26" FontWeight="Bold">与水同行</Label>
+            <TextBlock Width="500" Height="35" Margin="122,0,0,0" HorizontalAlignment="Left" Foreground="White" FontSize="14" TextWrapping="Wrap">
+                时长：05:00 <LineBreak/> 
+                请戴上耳机，或打开音箱
+            </TextBlock>
+            <Label Margin="120,3,5,5" HorizontalAlignment="Left" Foreground="White" FontSize="26" FontWeight="Bold">四季如歌</Label>
+            <TextBlock Width="500" Height="35" Margin="122,0,0,0" HorizontalAlignment="Left" Foreground="White" FontSize="14" TextWrapping="Wrap">
+                时长：05:00 <LineBreak/> 
+                请戴上耳机，或打开音箱
+            </TextBlock>
+            <Label Margin="120,3,5,5" HorizontalAlignment="Left" Foreground="White" FontSize="26" FontWeight="Bold">世界名画</Label>
+            <TextBlock Width="500" Height="35" Margin="122,0,0,0" HorizontalAlignment="Left" Foreground="White" FontSize="14" TextWrapping="Wrap">
+                时长：05:00 <LineBreak/> 
+                请戴上耳机，或打开音箱
+            </TextBlock>
+        </StackPanel>
+        <!--三个图标按钮-->
+        <locallib:ImageButton Cursor="Hand"  Canvas.Top="170" Canvas.Left="320"  Width="136" Height="136" ImgPath="/resource/img/relax_mxfs_C.png" MouseOverImgPath="/resource/img/relax_mxfs_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_minxiang" Click="btn_minxiang_Click"/>
+        <locallib:ImageButton Cursor="Hand"  Canvas.Top="400" Canvas.Left="470"  Width="136" Height="136" ImgPath="/resource/img/relax_jrfs_A.png" MouseOverImgPath="/resource/img/relax_jrfs_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_jrfs" Click="btn_jrfs_Click" />
+        <locallib:ImageButton Cursor="Hand"  Canvas.Top="400" Canvas.Left="160"  Width="136" Height="136" ImgPath="/resource/img/relax_yyfs_A.png" MouseOverImgPath="/resource/img/relax_yyfs_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_yyfs" Click="btn_yyfs_Click"/>
+        <!--返回主页-->
+        <locallib:ImageButton Canvas.Top="680" Canvas.Left="1050"  Width="134" Height="39" ImgPath="/resource/img/exit_index.png" MouseOverImgPath="/resource/img/exit_index.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_backmain" Click="btn_backmain_Click" Cursor="Hand" />
+    </Canvas>
+</Page>

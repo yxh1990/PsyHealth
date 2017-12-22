@@ -1,0 +1,46 @@
+﻿<Page x:Class="PsyHealth.XueXiWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PsyHealth"
+        xmlns:locallib="clr-namespace:PsyHealth.lib"
+        mc:Ignorable="d"
+        Title="XueXiWindow" Width="1024" Height="760">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/style/maincss.xaml"/>
+                <ResourceDictionary Source="/style/xuexi.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Page.Background>
+        <ImageBrush ImageSource="/resources/img/SPCS_XDLJS_DT.bmp"  Stretch="Fill"></ImageBrush>
+    </Page.Background>
+    <Canvas>
+        <!--初始化播放器背景图片-->
+        <Image x:Name="videobgimg" Canvas.Top="137" Canvas.Left="92" Source="/resources/img/SPCS_XDLJS_SPTP_D.bmp" Width="540" Height="405"  />
+        <MediaElement x:Name="videoScreenMediaElement" Canvas.Top="137" Canvas.Left="92" Width="540" Height="405"  Volume="{Binding ElementName=volumeSlider, Path=Value}" LoadedBehavior="Manual" Visibility="Hidden"/>
+        
+        <!--四个菜单-->
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="75"  Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_XDLJS_C.bmp" MouseOverImgPath="/resources/img/SPCS_AN_XDLJS_C.bmp" Template="{StaticResource ImageButtonTemplate}" />
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="240" Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_XLCLS_A.bmp" MouseOverImgPath="/resources/img/SPCS_AN_XLCLS_B.bmp" Template="{StaticResource ImageButtonTemplate}" x:Name="btn_jiance" Click="btn_jiance_Click"/>
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="405" Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_XLZX_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_XLZX_B.bmp"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_xunlian" Click="btn_xunlian_Click"/>
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="565" Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_CKJL_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_CKJL_B.bmp"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_jilu" Click="btn_jilu_Click"/>
+        
+        <!-- 四个视频播放按钮 -->
+        <locallib:ImageButton Canvas.Top="105" Canvas.Left="670" Width="136" Height="40" ImgPath="/resources/img/SPCS_XDLJS_AN_ZZPHSBF_A.bmp"  MouseOverImgPath="/resources/img/SPCS_XDLJS_AN_ZZPHSBF_B.bmp" Template="{StaticResource ImageButtonTemplate}"  Click="btn_play_Click"/>
+        <locallib:ImageButton Canvas.Top="168" Canvas.Left="776" Width="110" Height="26" ImgPath="/resources/img/SPCS_XDLJS_AN_JZZYL_A.bmp"    MouseOverImgPath="/resources/img/SPCS_XDLJS_AN_JZZYL_B.bmp"   DisableImgPath="/resources/img/SPCS_XDLJS_AN_JZZYL_C.bmp"  Template="{StaticResource ImageButtonTemplate}"  Click="btn_play_Click" x:Name="btn_yinian"/>
+        <locallib:ImageButton Canvas.Top="208" Canvas.Left="823" Width="110" Height="26" ImgPath="/resources/img/SPCS_XDLJS_AN_SHX_A.bmp"      MouseOverImgPath="/resources/img/SPCS_XDLJS_AN_SHX_B.bmp"     DisableImgPath="/resources/img/SPCS_XDLJS_AN_SHX_C.bmp" Template="{StaticResource ImageButtonTemplate}"  x:Name="btn_huxi" Click="btn_huxi_Click"/>
+        <locallib:ImageButton Canvas.Top="248" Canvas.Left="875" Width="110" Height="26" ImgPath="/resources/img/SPCS_XDLJS_AN_QGZY_A.bmp"     MouseOverImgPath="/resources/img/SPCS_XDLJS_AN_QGZY_B.bmp"    DisableImgPath="/resources/img/SPCS_XDLJS_AN_QGZY_C.bmp" Template="{StaticResource ImageButtonTemplate}"  x:Name="btn_ganqin" Click="btn_ganqin_Click"/>
+
+        <!-- 播放器按钮和声音控制条-->
+        <locallib:ImageButton Canvas.Top="543" Canvas.Left="95" Width="29" Height="29" ImgPath="/resources/img/SPCS_XDLJS_AN_KS_A.bmp"     MouseOverImgPath="/resources/img/SPCS_XDLJS_AN_KS_B.bmp"    Template="{StaticResource ImageButtonTemplate}" x:Name="btn_play" Click="btn_play_Click"/>
+        <locallib:ImageButton Canvas.Top="543" Canvas.Left="95" Width="29" Height="29" ImgPath="/resources/img/SPCS_XDLJS_AN_TZ_A.bmp"     MouseOverImgPath="/resources/img/SPCS_XDLJS_AN_TZ_B.bmp"    Template="{StaticResource ImageButtonTemplate}" x:Name="btn_pause" Click="btn_pause_Click" Visibility="Hidden"/>
+        <Slider x:Name="volumeSlider" Canvas.Top="552" Canvas.Left="462"  Style="{StaticResource Slider_CustomStyle}" Width="140" Height="10" Value="20" Minimum="0" Maximum="100" />
+        
+        <!-- 返回主页面按钮 -->
+        <locallib:ImageButton Canvas.Top="690" Canvas.Left="832" Width="136" Height="40" ImgPath="/resources/img/SPCS_AN_FHZJM_A.bmp"   MouseOverImgPath="/resources/img/SPCS_AN_FHZJM_B.bmp" Template="{StaticResource ImageButtonTemplate}" x:Name="Btn_backIndex" Click="Btn_backIndex_Click" />
+    </Canvas>
+</Page>

@@ -1,0 +1,31 @@
+﻿<Page x:Class="XjHealth.page.xuexi.playvideo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XjHealth.page.xuexi"
+        xmlns:locallib="clr-namespace:XjHealth.lib"
+        mc:Ignorable="d"
+        Title="playvideo" Width="1366" Height="768" Loaded="Page_Loaded">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/style/maincss.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Page.Background>
+        <ImageBrush ImageSource="/resource/img/learn_third.png"  Stretch="Fill"></ImageBrush>
+    </Page.Background>
+    <Canvas>
+        <locallib:ImageButton Cursor="Hand"  Canvas.Top="170" Canvas.Left="110"  Width="136" Height="136" ImgPath="/resource/img/learn_ynsd_A.png" MouseOverImgPath="/resource/img/learn_ynsd_B.png" DisableImgPath="/resource/img/learn_ynsd_C.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_yinian" Click="btn_yinian_Click" />
+        <locallib:ImageButton Cursor="Hand"  Canvas.Top="330" Canvas.Left="110"  Width="136" Height="136" ImgPath="/resource/img/learn_hxxz_A.png" MouseOverImgPath="/resource/img/learn_hxxz_B.png" DisableImgPath="/resource/img/learn_hxxz_C.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_fuxi" Click="btn_fuxi_Click" />
+        <locallib:ImageButton Cursor="Hand"  Canvas.Top="495" Canvas.Left="110"  Width="136" Height="136" ImgPath="/resource/img/learn_qgzy_A.png" MouseOverImgPath="/resource/img/learn_qgzy_B.png" DisableImgPath="/resource/img/learn_qgzy_C.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_qingan" Click="btn_qingan_Click" />
+
+        <Image Source="/resource/img/learn_player.png" Canvas.Top="160" Canvas.Left="268" Width="560" Height="489"></Image>
+        <locallib:ImageButton Cursor="Hand"  Canvas.Top="580" Canvas.Left="280"  Width="58" Height="58" ImgPath="/resource/img/learn_play.png" MouseOverImgPath="/resource/img/learn_play.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_play" Click="btn_play_Click" />
+        <MediaElement x:Name="videoScreenMediaElement" Canvas.Top="179" Canvas.Left="275" Width="545" Height="390" LoadedBehavior="Manual"/>
+        <!--返回上一级-->
+        <locallib:ImageButton Canvas.Top="680" Canvas.Left="1050"  Width="134" Height="39" ImgPath="/resource/img/exit_before.png" MouseOverImgPath="/resource/img/exit_before.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_backbefore" Click="btn_backbefore_Click" Cursor="Hand"/>
+    </Canvas>
+</Page>

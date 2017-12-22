@@ -1,0 +1,110 @@
+﻿<Page x:Class="XjHealth.page.jiance.jiancemain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XjHealth.page.jiance"
+        xmlns:locallib="clr-namespace:XjHealth.lib"
+        xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:wf ="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+        mc:Ignorable="d"
+        Title="心际之芯" Width="1366" Height="768" Loaded="Page_Loaded">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/style/maincss.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Page.Background>
+        <ImageBrush ImageSource="/resource/img/monitor.png"  Stretch="Fill"></ImageBrush>
+    </Page.Background>
+    <Canvas>
+        <!--即时心率-->
+        <Label x:Name="lblhr" Canvas.Top="145" Canvas.Left="1045" Foreground="Red" FontWeight="Bold" FontSize="20">0</Label>
+        <!--信号质量-->
+        <Label x:Name="lblxhdesc" Canvas.Top="114" Canvas.Left="973" Foreground="White" FontWeight="Bold" FontSize="16">信号质量</Label>
+        <Label x:Name="lblxh" Canvas.Top="110" Canvas.Left="1045" Foreground="Red" FontWeight="Bold" FontSize="20">0</Label>
+        
+        <wfi:WindowsFormsHost Canvas.Top="190" Canvas.Left="248"  x:Name="chartwindow">
+            <wf:Chart x:Name="chart1" Width="625" Height="325">
+            </wf:Chart>
+        </wfi:WindowsFormsHost>
+        <locallib:ImageButton Cursor="Hand" Canvas.Top="535" Canvas.Left="250"  Width="50" Height="46" ImgPath="/resource/img/monitor_hr_A.png" MouseOverImgPath="/resource/img/monitor_hr_B.png" Template="{StaticResource ImageButtonTemplate}"  x:Name="btn_hr" />
+        <locallib:ImageButton Cursor="Hand" Canvas.Top="535" Canvas.Left="310"  Width="50" Height="46" ImgPath="/resource/img/monitor_hrv_A.png" MouseOverImgPath="/resource/img/monitor_hrv_B.png" Template="{StaticResource ImageButtonTemplate}"  x:Name="btn_hrv" />
+        <locallib:ImageButton Cursor="Hand" Canvas.Top="535" Canvas.Left="370"  Width="50" Height="46" ImgPath="/resource/img/monitor_stress_A.png" MouseOverImgPath="/resource/img/monitor_stress_B.png" Template="{StaticResource ImageButtonTemplate}"  x:Name="btn_stress" />
+        <locallib:ImageButton Cursor="Hand" Canvas.Top="535" Canvas.Left="430"  Width="50" Height="46" ImgPath="/resource/img/monitor_mood_A.png" MouseOverImgPath="/resource/img/monitor_mood_B.png" Template="{StaticResource ImageButtonTemplate}"  x:Name="btn_mood" />
+        
+        <!-- 开始 设置 -->
+        <locallib:ImageButton Cursor="Hand" Canvas.Top="560" Canvas.Left="720"  Width="71" Height="26" ImgPath="/resource/img/monitor_chart_start.png" MouseOverImgPath="/resource/img/monitor_chart_start.png" Template="{StaticResource ImageButtonTemplate}"  x:Name="btn_monstart" Click="btn_monstart_Click"/>
+        <locallib:ImageButton Cursor="Hand" Canvas.Top="560" Canvas.Left="720"  Width="71" Height="26" ImgPath="/resource/img/monitor_exit.png" MouseOverImgPath="/resource/img/monitor_exit.png" Template="{StaticResource ImageButtonTemplate}"  x:Name="btn_monstop" Visibility="Hidden" Click="btn_monstop_Click"/>
+        <locallib:ImageButton Cursor="Hand" Canvas.Top="560" Canvas.Left="800"  Width="71" Height="26" ImgPath="/resource/img/monitor_chart_set.png" MouseOverImgPath="/resource/img/monitor_chart_set.png" Template="{StaticResource ImageButtonTemplate}"  x:Name="btn_monset" Click="btn_monset_Click" />
+        
+        <!--呼吸助手-->
+        <locallib:ImageButton Cursor="Hand" Canvas.Top="565" Canvas.Left="1000"  Width="156" Height="39" ImgPath="/resource/img/monitor_breath_btn.png" MouseOverImgPath="/resource/img/monitor_breath_btn.png" Template="{StaticResource ImageButtonTemplate}"  x:Name="btn_monbreath" Click="btn_monbreath_Click" />
+        <!--返回主页-->
+        <locallib:ImageButton Canvas.Top="680" Canvas.Left="1050"  Width="134" Height="39" ImgPath="/resource/img/exit_index.png" MouseOverImgPath="/resource/img/exit_index.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_backmain" Click="btn_backmain_Click" Cursor="Hand" />
+
+        <Canvas x:Name="loading" RenderTransformOrigin="0.5,0.5" Canvas.Top="210" Canvas.Left="310" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="120" Margin="187,76,241,85">
+            <Ellipse Width="15" Height="15" Canvas.Left="55" Canvas.Top="31" Stretch="Fill" Fill="#FFD1D1F7" Opacity="1.0"/>
+            <Ellipse Width="15" Height="15" Canvas.Left="38" Canvas.Top="39" Stretch="Fill" Fill="Blue" Opacity="0.8"/>
+            <Ellipse Width="15" Height="15" Canvas.Left="36" Canvas.Top="58" Stretch="Fill" Fill="#FF0000FE" Opacity="0.7"/>
+            <Ellipse Width="15" Height="15" Canvas.Left="52" Canvas.Top="67" Stretch="Fill" Fill="Blue" Opacity="0.6"/>
+            <Ellipse Width="15" Height="15" Canvas.Left="68" Canvas.Top="61" Stretch="Fill" Fill="#FF2E2EFF" Opacity="0.5"/>
+            <Ellipse Width="15" Height="15" Canvas.Left="69" Canvas.Top="42" Stretch="Fill" Fill="#FF6F6FFF" Opacity="0.4"/>
+            <Canvas.RenderTransform>
+                <RotateTransform x:Name="SpinnerRotate" Angle="0" />
+            </Canvas.RenderTransform>
+            <Canvas.Triggers>
+                <EventTrigger RoutedEvent="ContentControl.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="SpinnerRotate" Storyboard.TargetProperty="(RotateTransform.Angle)" From="0" To="360" Duration="0:0:0.8" RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Canvas.Triggers>
+        </Canvas>
+        
+        <!--展示心状图 -->
+        <Image Source="/resource/img/heart.png" x:Name="heartRelax" Width="96" Height="81" Canvas.Left="975" Canvas.Top="250"/>
+        <Image Source="/resource/img/heart.png" x:Name="heartEmotion" Width="96" Height="81" Canvas.Left="975" Canvas.Top="420"/>
+
+        <!--呼吸助手-->
+        <Canvas Canvas.Left="970" Canvas.Top="235" Width="260" Height="374" x:Name="hxcon" Visibility="Hidden" Panel.ZIndex="50">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/resource/img/monitor_breath.png"  Stretch="Fill"></ImageBrush>
+            </Canvas.Background>
+            <Image x:Name="hximg" Source="/resource/img/breath.png" Width="234" Height="236"  Canvas.Left="13" Canvas.Top="43"/>
+            <MediaElement x:Name="videoMediaElement" LoadedBehavior="Manual" MediaEnded="videoMediaElement_MediaEnded" Canvas.Top="43" Canvas.Left="13" Width="234" Height="236"  Visibility="Hidden">
+            </MediaElement>
+            <!--切换助手-->
+            <locallib:ImageButton Canvas.Top="305" Canvas.Left="185" Cursor="Hand" Width="67" Height="23" ImgPath="/resource/img/monitor_change.png" MouseOverImgPath="/resource/img/monitor_change.png" Template="{StaticResource ImageButtonTemplate}" x:Name="btn_qiehuan" Click="btn_qiehuan_Click"/>
+            <locallib:ImageButton Canvas.Top="345" Canvas.Left="12"  Cursor="Hand" Width="51" Height="21" ImgPath="/resource/img/monitor_start.png" MouseOverImgPath="/resource/img/monitor_start.png" Template="{StaticResource ImageButtonTemplate}" x:Name="btn_kaishi" Click="btn_kaishi_Click" />
+            <locallib:ImageButton Canvas.Top="345" Canvas.Left="200" Cursor="Hand" Width="51" Height="21" ImgPath="/resource/img/monitor_exit.png" MouseOverImgPath="/resource/img/monitor_exit.png" Template="{StaticResource ImageButtonTemplate}" x:Name="btn_tuichu" Click="btn_tuichu_Click" />
+        </Canvas>
+
+        <!--设置-->
+        <Canvas x:Name="userconfig" Panel.ZIndex="80" Canvas.Top="250" Canvas.Left="910" Width="232" Height="237" Visibility="Hidden">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/resource/img/chart_set_bg.png"  Stretch="Fill"></ImageBrush>
+            </Canvas.Background>
+            <Label Canvas.Top="62" Canvas.Left="20" Content="音乐" FontSize="16" FontWeight="Bold"></Label>
+            <RadioButton Padding="5,0,0,0" Cursor="Hand" GroupName="gMusic" Content="开" x:Name="rbMusic" VerticalAlignment="Top" d:LayoutOverrides="Width" Template="{DynamicResource RadioButtonControlTemplate2}" Canvas.Top="70" Canvas.Left="80">
+            </RadioButton>
+            <RadioButton Padding="5,0,0,0" Cursor="Hand" GroupName="gMusic" Content="关" x:Name="rbMusic2" VerticalAlignment="Top" d:LayoutOverrides="Width" Template="{DynamicResource RadioButtonControlTemplate2}" Canvas.Top="70" Canvas.Left="140">
+            </RadioButton>
+            <Label Canvas.Top="95" Canvas.Left="20" Content="音量" FontSize="16" FontWeight="Bold"></Label>
+            <Slider Margin="5,10,5,5" x:Name="sliderVolume"  Canvas.Left="70"  Canvas.Top="100" Width="105" Height="10" Maximum="100" Minimum="0" Value="20">
+            </Slider>
+            <Label Canvas.Top="135" Canvas.Left="20" Content="选择" FontSize="16" FontWeight="Bold"></Label>
+            <TextBox x:Name="txtmusicpath" Canvas.Top="138" Canvas.Left="75" Width="130" Height="25" VerticalAlignment="Top" TextAlignment="Center">resource/mp3/background.mp3</TextBox>
+            <locallib:ImageButton Canvas.Top="143" Canvas.Left="210"  Width="15" Height="15" ImgPath="/resource/img/SPCS_SZ_DKAN_YYXZ_A.bmp" MouseOverImgPath="/resource/img/SPCS_SZ_DKAN_YYXZ_B.bmp"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_checkfile" Cursor="Hand" Click="btn_checkfile_Click"/>
+
+            <locallib:ImageButton Margin="5,15,5,5" Canvas.Top="180" Canvas.Left="60"  Cursor="Hand" Width="51" Height="21" ImgPath="/resource/img/chart_stop_btnA.png"  MouseOverImgPath="/resource/img/chart_stop_btnA.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_ok" Click="btn_ok_Click" />
+            <locallib:ImageButton Margin="5,15,5,5" Canvas.Top="180" Canvas.Left="120" Cursor="Hand" Width="51" Height="21" ImgPath="/resource/img/chart_stop_btnB.png" MouseOverImgPath="/resource/img/chart_stop_btnB.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_cancle" Click="btn_cancle_Click"/>
+        </Canvas>
+        <!-- mp3播放器-->
+        <MediaElement  x:Name="media1" LoadedBehavior="Manual"  Volume="{Binding ElementName=sliderVolume, Path=Value}" UnloadedBehavior="Stop" Stretch="Fill" />
+    </Canvas>
+</Page>

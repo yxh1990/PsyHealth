@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C5D7C16-C72A-4EF1-8076-66BC25A98724}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XjHealth</RootNamespace>
+    <AssemblyName>XjHealth</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="libNeuroSkyECG, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\DLL\libNeuroSkyECG.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\DLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\UserBLL.cs" />
+    <Compile Include="common\dateFormat.cs" />
+    <Compile Include="common\utils.cs" />
+    <Compile Include="Ecg\EcgHelper.cs" />
+    <Compile Include="lib\ImageButton.cs" />
+    <Compile Include="lib\JsonHelper.cs" />
+    <Compile Include="lib\RestClient.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="page\cepin\cepin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\cepin\cepinend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\cepin\cepinmain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\cepin\cepinstart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\Index.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\jiance\jiancemain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\record\recordmain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\relax\relaxmain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\train\trainmain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\xuexi\learnmain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\xuexi\playvideo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="style\maincss.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\ResultInfo.cs" />
+    <Compile Include="Model\Userinfo.cs" />
+    <Compile Include="NativeThinkgear.cs" />
+    <Compile Include="page\cepin\cepin.xaml.cs">
+      <DependentUpon>cepin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\cepin\cepinend.xaml.cs">
+      <DependentUpon>cepinend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\cepin\cepinmain.xaml.cs">
+      <DependentUpon>cepinmain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\cepin\cepinstart.xaml.cs">
+      <DependentUpon>cepinstart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\Index.xaml.cs">
+      <DependentUpon>Index.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\jiance\jiancemain.xaml.cs">
+      <DependentUpon>jiancemain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\record\recordmain.xaml.cs">
+      <DependentUpon>recordmain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\relax\relaxmain.xaml.cs">
+      <DependentUpon>relaxmain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\train\trainmain.xaml.cs">
+      <DependentUpon>trainmain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\xuexi\learnmain.xaml.cs">
+      <DependentUpon>learnmain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\xuexi\playvideo.xaml.cs">
+      <DependentUpon>playvideo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\twi.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\img\exit_before.png" />
+    <Resource Include="resource\img\exit_index.png" />
+    <Resource Include="resource\img\index.png" />
+    <Resource Include="resource\img\index_learn_A.png" />
+    <Resource Include="resource\img\index_learn_B.png" />
+    <Resource Include="resource\img\index_learn_C.png" />
+    <Resource Include="resource\img\index_learn_D.png" />
+    <Resource Include="resource\img\index_monitor_A.png" />
+    <Resource Include="resource\img\index_monitor_B.png" />
+    <Resource Include="resource\img\index_monitor_C.png" />
+    <Resource Include="resource\img\index_monitor_D.png" />
+    <Resource Include="resource\img\index_record_A.png" />
+    <Resource Include="resource\img\index_record_B.png" />
+    <Resource Include="resource\img\index_record_C.png" />
+    <Resource Include="resource\img\index_record_D.png" />
+    <Resource Include="resource\img\index_relax_A.png" />
+    <Resource Include="resource\img\index_relax_B.png" />
+    <Resource Include="resource\img\index_relax_C.png" />
+    <Resource Include="resource\img\index_relax_D.png" />
+    <Resource Include="resource\img\index_scale_A.png" />
+    <Resource Include="resource\img\index_scale_B.png" />
+    <Resource Include="resource\img\index_scale_C.png" />
+    <Resource Include="resource\img\index_scale_D.png" />
+    <Resource Include="resource\img\index_train_A.png" />
+    <Resource Include="resource\img\index_train_B.png" />
+    <Resource Include="resource\img\index_train_C.png" />
+    <Resource Include="resource\img\index_train_D.png" />
+    <Resource Include="resource\img\index_user_A.png" />
+    <Resource Include="resource\img\index_user_B.png" />
+    <Resource Include="resource\img\index_user_C.png" />
+    <Resource Include="resource\img\index_user_D.png" />
+    <Resource Include="resource\img\learn.png" />
+    <Resource Include="resource\img\learn_hxxz_A.png" />
+    <Resource Include="resource\img\learn_hxxz_B.png" />
+    <Resource Include="resource\img\learn_hxxz_C.png" />
+    <Resource Include="resource\img\learn_hxxz_D.png" />
+    <Resource Include="resource\img\learn_play.png" />
+    <Resource Include="resource\img\learn_qgzy_A.png" />
+    <Resource Include="resource\img\learn_qgzy_B.png" />
+    <Resource Include="resource\img\learn_qgzy_C.png" />
+    <Resource Include="resource\img\learn_qgzy_D.png" />
+    <Resource Include="resource\img\learn_second.png" />
+    <Resource Include="resource\img\learn_text.png" />
+    <Resource Include="resource\img\learn_third.png" />
+    <Resource Include="resource\img\learn_ynsd_A.png" />
+    <Resource Include="resource\img\learn_ynsd_B.png" />
+    <Resource Include="resource\img\learn_ynsd_C.png" />
+    <Resource Include="resource\img\learn_ynsd_D.png" />
+    <Resource Include="resource\img\login.png" />
+    <Resource Include="resource\img\login_btn.png" />
+    <Resource Include="resource\img\login_exit.png" />
+    <Resource Include="resource\img\monitor.png" />
+    <Resource Include="resource\img\monitor_breath.png" />
+    <Resource Include="resource\img\monitor_breath_btn.png" />
+    <Resource Include="resource\img\monitor_change.png" />
+    <Resource Include="resource\img\monitor_chart_set.png" />
+    <Resource Include="resource\img\monitor_chart_start.png" />
+    <Resource Include="resource\img\monitor_exit.png" />
+    <Resource Include="resource\img\monitor_hrv_A.png" />
+    <Resource Include="resource\img\monitor_hrv_B.png" />
+    <Resource Include="resource\img\monitor_hrv_C.png" />
+    <Resource Include="resource\img\monitor_hr_A.png" />
+    <Resource Include="resource\img\monitor_hr_B.png" />
+    <Resource Include="resource\img\monitor_hr_C.png" />
+    <Resource Include="resource\img\monitor_mood_A.png" />
+    <Resource Include="resource\img\monitor_mood_B.png" />
+    <Resource Include="resource\img\monitor_mood_C.png" />
+    <Resource Include="resource\img\monitor_start.png" />
+    <Resource Include="resource\img\monitor_stress_A.png" />
+    <Resource Include="resource\img\monitor_stress_B.png" />
+    <Resource Include="resource\img\monitor_stress_C.png" />
+    <Resource Include="resource\img\record.png" />
+    <Resource Include="resource\img\record_tab_A.png" />
+    <Resource Include="resource\img\record_tab_B.png" />
+    <Resource Include="resource\img\record_tab_bg1.png" />
+    <Resource Include="resource\img\record_tab_bg2.png" />
+    <Resource Include="resource\img\relax_jrfs_A.png" />
+    <Resource Include="resource\img\relax_jrfs_B.png" />
+    <Resource Include="resource\img\relax_jrfs_C.png" />
+    <Resource Include="resource\img\relax_jrfs_D.png" />
+    <Resource Include="resource\img\relax_mxfs_A.png" />
+    <Resource Include="resource\img\relax_mxfs_B.png" />
+    <Resource Include="resource\img\relax_mxfs_C.png" />
+    <Resource Include="resource\img\relax_mxfs_D.png" />
+    <Resource Include="resource\img\relax_second.png" />
+    <Resource Include="resource\img\relax_third.png" />
+    <Resource Include="resource\img\relax_yyfs_A.png" />
+    <Resource Include="resource\img\relax_yyfs_B.png" />
+    <Resource Include="resource\img\relax_yyfs_C.png" />
+    <Resource Include="resource\img\relax_yyfs_D.png" />
+    <Resource Include="resource\img\scale.png" />
+    <Resource Include="resource\img\scale_hmd.png" />
+    <Resource Include="resource\img\scale_jlzp.png" />
+    <Resource Include="resource\img\scale_option.png" />
+    <Resource Include="resource\img\scale_qsn.png" />
+    <Resource Include="resource\img\scale_second.png" />
+    <Resource Include="resource\img\scale_test_1.png" />
+    <Resource Include="resource\img\scale_test_2.png" />
+    <Resource Include="resource\img\scale_test_end.png" />
+    <Resource Include="resource\img\scale_third.png" />
+    <Resource Include="resource\img\scale_ylyd.png" />
+    <Resource Include="resource\img\train.png" />
+    <Resource Include="resource\img\train_pts_pic.png" />
+    <Resource Include="resource\img\train_pts_text.png" />
+    <Resource Include="resource\img\train_sj_pic.png" />
+    <Resource Include="resource\img\train_sj_text.png" />
+    <Resource Include="resource\img\train_sp_pic.png" />
+    <Resource Include="resource\img\train_sp_text.png" />
+    <Resource Include="resource\img\train_xlsq_pic.png" />
+    <Resource Include="resource\img\train_xlsq_text.png" />
+    <Resource Include="resource\img\user_exit.png" />
+    <Resource Include="resource\img\user_msg_bg.png" />
+    <Resource Include="resource\img\user_submit.png" />
+    <Resource Include="resource\img\user_tab_A.png" />
+    <Resource Include="resource\img\user_tab_B.png" />
+    <Resource Include="resource\img\user_tab_bg1.png" />
+    <Resource Include="resource\img\user_tab_bg2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\img\SPCS_HXZS_SZ.bmp" />
+    <Resource Include="resource\img\SPCS_HXZS_GG.bmp" />
+    <Resource Include="resource\img\SPCS_HXZS_CQ.bmp" />
+    <Resource Include="resource\img\SPCS_SZ_DT.bmp" />
+    <Resource Include="resource\img\SPCS_AN_YD_A.bmp" />
+    <Resource Include="resource\img\SPCS_AN_YD_B.bmp" />
+    <Resource Include="resource\img\SPCS_SZ_DKAN_YYXZ_A.bmp" />
+    <Resource Include="resource\img\SPCS_SZ_DKAN_YYXZ_B.bmp" />
+    <Resource Include="resource\img\SPCS_AN_YY_B.bmp" />
+    <Resource Include="resource\img\SPCS_HXZS_AN_TC_B.bmp" />
+    <Resource Include="resource\img\SPCS_AN_YY_A.bmp" />
+    <Resource Include="resource\img\SPCS_HXZS_AN_TC_A.bmp" />
+    <Resource Include="resource\img\SPCS_XDLJS_LT_LS_A.bmp" />
+    <Resource Include="resource\img\SPCS_XDLJS_LT_AN_B.bmp" />
+    <Resource Include="resource\img\exitBg.png" />
+    <Resource Include="resource\img\exitCancel.png" />
+    <Resource Include="resource\img\exitSure.png" />
+    <Resource Include="resource\img\heartA.png" />
+    <Resource Include="resource\img\heart.png" />
+    <Resource Include="resource\img\heartB.png" />
+    <Resource Include="resource\img\heartC.png" />
+    <Resource Include="resource\img\heartD.png" />
+    <Resource Include="resource\img\heartE.png" />
+    <Resource Include="resource\img\breath.png" />
+    <Resource Include="resource\img\chart_set_bg.png" />
+    <Resource Include="resource\img\chart_stop_btnA.png" />
+    <Resource Include="resource\img\chart_stop_btnB.png" />
+    <Content Include="resource\mp3\background.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resource\video\attention.AVI">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resource\video\emotion.AVI">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resource\video\huxi_chuiqiu.avi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resource\video\huxi_gangguang.avi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resource\video\huxi_shalou.avi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resource\video\huxi_shanzi.avi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="resource\img\pwd_text.png" />
+    <Resource Include="resource\img\login_reset.png" />
+    <Resource Include="resource\img\top_login.png" />
+    <Resource Include="resource\img\guest.png" />
+    <Resource Include="resource\img\learn_player.png" />
+    <Content Include="lib\DLL\libNeuroSkyECG.dll" />
+    <Content Include="lib\DLL\NativeECG.dll" />
+    <Content Include="lib\DLL\Newtonsoft.Json.dll" />
+    <Content Include="lib\DLL\thinkgear.dll" />
+    <Resource Include="resource\img\SPCS_AN_HXZS_A.bmp" />
+    <Resource Include="resource\img\SPCS_AN_HXZS_B.bmp" />
+    <Resource Include="resource\img\SPCS_TCK_DT_HXZS.bmp" />
+    <Resource Include="resource\img\SPCS_HXZS_SL.bmp" />
+    <Resource Include="resource\img\SPCS_HXZS_AN_QHZS_A.bmp" />
+    <Resource Include="resource\img\SPCS_HXZS_AN_QHZS_B.bmp" />
+    <Resource Include="resource\img\SPCS_XLCLS_AN_KS_B.bmp" />
+    <Resource Include="resource\img\SPCS_XLCLS_AN_KS_A.bmp" />
+    <Resource Include="resource\img\SPCS_AN_TC_A.bmp" />
+    <Resource Include="resource\img\SPCS_AN_TC_B.bmp" />
+    <Content Include="resource\video\breathe.AVI">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

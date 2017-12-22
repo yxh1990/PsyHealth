@@ -1,0 +1,88 @@
+﻿<Page x:Class="PsyHealth.Index"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PsyHealth"
+        xmlns:locallib="clr-namespace:PsyHealth.lib"
+        mc:Ignorable="d"
+        Title="心际空间" Width="1024" Height="760">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/style/maincss.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Page.Background>
+        <ImageBrush ImageSource="/resources/img/SPCS_XDL_DT.bmp"  Stretch="Fill"></ImageBrush>
+    </Page.Background>
+    <Canvas>
+        <!--显示用户名-->
+        <TextBlock Style="{StaticResource ResourceKey=UserName}" x:Name="TxtShowInfo" Canvas.Top="630" Canvas.Left="815">欢迎,dddddddd</TextBlock>
+        <!--四个菜单-->
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="75"  Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_XDLJS_A.bmp" MouseOverImgPath="/resources/img/SPCS_AN_XDLJS_B.bmp"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_xuexi" Click="btn_xuexi_Click" />
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="240" Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_XLCLS_A.bmp" MouseOverImgPath="/resources/img/SPCS_AN_XLCLS_B.bmp"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_jiance" Click="btn_jiance_Click"/>
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="405" Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_XLZX_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_XLZX_B.bmp"   Template="{StaticResource ImageButtonTemplate}" x:Name="btn_xunlian" Click="btn_xunlian_Click"/>
+        <locallib:ImageButton Canvas.Top="597" Canvas.Left="565" Width="105" Height="138" ImgPath="/resources/img/SPCS_AN_CKJL_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_CKJL_B.bmp"   Template="{StaticResource ImageButtonTemplate}" x:Name="btn_jilu" Click="btn_jilu_Click"/>
+        <!-- 三个功能按钮 -->
+        <locallib:ImageButton Canvas.Top="705" Canvas.Left="705" Width="90" Height="30" ImgPath="/resources/img/SPCS_DLJM_AN_XZYH_A.bmp"  MouseOverImgPath="/resources/img/SPCS_DLJM_AN_XZYH_B.bmp"   Template="{StaticResource ImageButtonTemplate}" x:Name="Btn_user" Click="Btn_user_Click"/>
+        <locallib:ImageButton Canvas.Top="705" Canvas.Left="810" Width="90" Height="30" ImgPath="/resources/img/SPCS_DLJM_AN_GY_A.bmp"  MouseOverImgPath="/resources/img/SPCS_DLJM_AN_GY_B.bmp"   Template="{StaticResource ImageButtonTemplate}" x:Name="Btn_about" Click="Btn_about_Click"/>
+        <locallib:ImageButton Canvas.Top="705" Canvas.Left="915" Width="90" Height="30" ImgPath="/resources/img/SPCS_DLJM_AN_TCXT_A.bmp"  MouseOverImgPath="/resources/img/SPCS_DLJM_AN_TCXT_B.bmp"   Template="{StaticResource ImageButtonTemplate}" x:Name="Btn_exit"  Click="Btn_exit_Click"/>
+
+        <!-- 关于 -->
+        <Image Source="/resources/img/SPCS_TCK_DT_ABOUT.bmp" Canvas.Top="320" Canvas.Left="580" x:Name="ImgInfo" Visibility="Hidden" Width="403" Height="290" />
+        <locallib:ImageButton x:Name="btnHideImgInfo"  Click="Btn_btnHideImgInfo_Click" Visibility="Hidden" Panel.ZIndex="10" Width="50" Height="20" Canvas.Top="570" Canvas.Left="750" ImgPath="/resources/img/SPCS_AN_QD_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_QD_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+
+        <!-- 退出系统 -->
+        <Image Source="/resources/img/SPCS_TCK_DT_TCXT.bmp" Canvas.Top="340" Canvas.Left="450" x:Name="exitInfo" Visibility="Hidden" Width="177" Height="70" />
+        <locallib:ImageButton x:Name="btnOkExit"  Click="Btn_btnOkExit_Click" Visibility="Hidden" Panel.ZIndex="10" Width="50" Height="20" Canvas.Top="385" Canvas.Left="480" ImgPath="/resources/img/SPCS_AN_QD_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_QD_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+        <locallib:ImageButton x:Name="btnCancelExit"  Click="Btn_btnCancelExit_Click" Visibility="Hidden" Panel.ZIndex="10" Width="50" Height="20" Canvas.Top="385" Canvas.Left="550" ImgPath="/resources/img/SPCS_AN_QX_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_QX_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+
+        <!-- 选择用户-->
+        <Grid Margin="5" Canvas.Top="390" Canvas.Left="610" x:Name="userlist" Visibility="Hidden" Width="230" Height="280">
+            <Grid.Background>
+                <ImageBrush ImageSource="/resources/img/SPCS_TCK_DT_XZDLYH.bmp"/>
+            </Grid.Background>
+
+            <!-- Define four rows: -->
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="35"/>
+
+                <RowDefinition  Height="35"/>
+                <RowDefinition  Height="35"/>
+                <RowDefinition  Height="35"/>
+                <RowDefinition  Height="35"/>
+                <RowDefinition  Height="35"/>
+                <RowDefinition  Height="35"/>
+            </Grid.RowDefinitions>
+
+            <!-- Define two columns: -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="35"/>
+            </Grid.ColumnDefinitions>
+
+
+            <locallib:ImageButton Content="创建新用户" Margin="12,0,2,3" Grid.Row="1" Grid.Column="1" Width="160" Height="33" ImgPath="/resources/img/SPCS_DLJM_YHXZAN_A.bmp"  MouseOverImgPath="/resources/img/SPCS_DLJM_YHXZAN_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+            <locallib:ImageButton Grid.Row="1" Grid.Column="2" Width="25" Height="33" ImgPath="/resources/img/SPCS_AN_X_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_X_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+
+            <locallib:ImageButton Content="创建新用户" Margin="12,0,2,3" Grid.Row="2" Grid.Column="1" Width="160" Height="33" ImgPath="/resources/img/SPCS_DLJM_YHXZAN_A.bmp"  MouseOverImgPath="/resources/img/SPCS_DLJM_YHXZAN_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+            <locallib:ImageButton Grid.Row="2" Grid.Column="2" Width="25" Height="33" ImgPath="/resources/img/SPCS_AN_X_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_X_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+
+            <locallib:ImageButton Content="创建新用户" Margin="12,0,2,3" Grid.Row="3" Grid.Column="1" Width="160" Height="33" ImgPath="/resources/img/SPCS_DLJM_YHXZAN_A.bmp"  MouseOverImgPath="/resources/img/SPCS_DLJM_YHXZAN_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+            <locallib:ImageButton Grid.Row="3" Grid.Column="2" Width="25" Height="33" ImgPath="/resources/img/SPCS_AN_X_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_X_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+
+            <locallib:ImageButton Content="创建新用户" Margin="12,0,2,3" Grid.Row="4" Grid.Column="1" Width="160" Height="33" ImgPath="/resources/img/SPCS_DLJM_YHXZAN_A.bmp"  MouseOverImgPath="/resources/img/SPCS_DLJM_YHXZAN_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+            <locallib:ImageButton Grid.Row="4" Grid.Column="2" Width="25" Height="33" ImgPath="/resources/img/SPCS_AN_X_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_X_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+
+            <locallib:ImageButton Content="创建新用户" Margin="12,0,2,3" Grid.Row="5" Grid.Column="1" Width="160" Height="33" ImgPath="/resources/img/SPCS_DLJM_YHXZAN_A.bmp"  MouseOverImgPath="/resources/img/SPCS_DLJM_YHXZAN_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+            <locallib:ImageButton Grid.Row="5" Grid.Column="2" Width="25" Height="33" ImgPath="/resources/img/SPCS_AN_X_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_X_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+
+            <locallib:ImageButton Content="创建新用户" Margin="12,0,2,3" Grid.Row="6" Grid.Column="1" Width="160" Height="33" ImgPath="/resources/img/SPCS_DLJM_YHXZAN_A.bmp"  MouseOverImgPath="/resources/img/SPCS_DLJM_YHXZAN_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+            <locallib:ImageButton Grid.Row="6" Grid.Column="2" Width="25" Height="33" ImgPath="/resources/img/SPCS_AN_X_A.bmp"  MouseOverImgPath="/resources/img/SPCS_AN_X_B.bmp"   Template="{StaticResource ImageButtonTemplate}" />
+        </Grid>
+        <locallib:ImageButton Canvas.Top="640" Canvas.Left="680" Width="90" Height="30" ImgPath="/resources/img/SPCS_XLJG_AN_TC_A.bmp"  MouseOverImgPath="/resources/img/SPCS_XLJG_AN_TC_B.bmp"   Template="{StaticResource ImageButtonTemplate}" x:Name="Btn_user_exit"  Click="Btn_user_exit_Click" Visibility="Hidden" />
+    </Canvas>
+</Page>

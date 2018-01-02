@@ -8,6 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/dll/customcontrollibrary.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/video/fuxi.mp4")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/video/lsavscobrb3t.mp4")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/video/qinggan.mp4")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/video/yinian.mp4")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/dll/com.force.json.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/mp3/background.mp3")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/video/attention.avi")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/video/emotion.avi")]

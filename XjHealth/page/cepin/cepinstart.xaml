@@ -21,8 +21,8 @@
     <Canvas>
         <!--开始测试-->
         <StackPanel Width="935" Height="425" Canvas.Left="190" Canvas.Top="200">
-            <Label Style="{StaticResource ScaleTitle}" >压力应对方式问卷</Label>
-            <TextBlock Padding="100,0,0,0"  Style="{StaticResource ScaleDesc}" TextWrapping="Wrap" Width="900" Height="425" FontSize="16" LineHeight="30">以帮助个体了解自己常采用的应对方式，为被测试者改善自己的压力应对方式，从而减缓压力事件对个体产生的不良心理的影响提供依据。</TextBlock>
+            <Label Style="{StaticResource ScaleTitle}" x:Name="stitle">压力应对方式问卷</Label>
+            <TextBlock Padding="100,0,0,0"  Style="{StaticResource ScaleDesc}" TextWrapping="Wrap" Width="900" Height="425" FontSize="16" LineHeight="30" x:Name="sdesc">以帮助个体了解自己常采用的应对方式，为被测试者改善自己的压力应对方式，从而减缓压力事件对个体产生的不良心理的影响提供依据。</TextBlock>
         </StackPanel>
         <locallib:ImageButton Canvas.Top="595" Canvas.Left="650"  Width="121" Height="31" ImgPath="/resource/img/scale_test_2.png" MouseOverImgPath="/resource/img/scale_test_2.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_start" Click="btn_start_Click"  Cursor="Hand" />
         

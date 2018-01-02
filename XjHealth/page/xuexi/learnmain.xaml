@@ -19,9 +19,9 @@
     </Page.Background>
     <Canvas>
         <!--三个图标按钮-->
-        <locallib:ImageButton Cursor="Hand"  Canvas.Top="170" Canvas.Left="320"  Width="136" Height="136" ImgPath="/resource/img/learn_ynsd_A.png" MouseOverImgPath="/resource/img/learn_ynsd_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_yinian" Click="btn_yinian_Click" />
-        <locallib:ImageButton Cursor="Hand"  Canvas.Top="380" Canvas.Left="470"  Width="136" Height="136" ImgPath="/resource/img/learn_hxxz_A.png" MouseOverImgPath="/resource/img/learn_hxxz_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_fuxi" Click="btn_fuxi_Click" />
-        <locallib:ImageButton Cursor="Hand"  Canvas.Top="395" Canvas.Left="150"  Width="136" Height="136" ImgPath="/resource/img/learn_qgzy_A.png" MouseOverImgPath="/resource/img/learn_qgzy_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_qingan" Click="btn_qingan_Click" />
+        <locallib:ImageButton Cursor="Hand"  Canvas.Top="170" Canvas.Left="320"  Width="136" Height="136" ImgPath="/resource/img/learn_ynsd_A.png" MouseOverImgPath="/resource/img/learn_ynsd_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_fuxi" Click="btn_fuxi_Click" Content="呼吸训练" Style="{StaticResource ButtonText}"/>
+        <locallib:ImageButton Cursor="Hand"  Canvas.Top="380" Canvas.Left="470"  Width="136" Height="136" ImgPath="/resource/img/learn_ynsd_A.png" MouseOverImgPath="/resource/img/learn_ynsd_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_minxiang" Click="btn_minxiang_Click"   Content="冥想训练" Style="{StaticResource ButtonText}" />
+        <locallib:ImageButton Cursor="Hand"  Canvas.Top="395" Canvas.Left="150"  Width="136" Height="136" ImgPath="/resource/img/learn_ynsd_A.png" MouseOverImgPath="/resource/img/learn_ynsd_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_fasong" Click="btn_fasong_Click" Content="放松训练" Style="{StaticResource ButtonText}" />
         
         <!--说明文字-->
         <Image Source="/resource/img/learn_text.png" Width="502" Height="146" Canvas.Top="310" Canvas.Left="640"></Image>

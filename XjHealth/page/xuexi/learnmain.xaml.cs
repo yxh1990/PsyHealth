@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using XjHealth.lib;
+using System.Configuration;
 
 namespace XjHealth.page.xuexi
 {
@@ -19,9 +21,11 @@ namespace XjHealth.page.xuexi
     /// </summary>
     public partial class learnmain : Page
     {
+        public static string Resturl;
         public learnmain()
         {
             InitializeComponent();
+            Resturl = ConfigurationManager.AppSettings["resturl"];
         }
 
         private void btn_backmain_Click(object sender, RoutedEventArgs e)
@@ -29,22 +33,29 @@ namespace XjHealth.page.xuexi
             NavigationService.Navigate(new Uri("page/Index.xaml", UriKind.Relative));
         }
 
-        private void btn_yinian_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Properties["video_id"] = "yinian";
-            NavigationService.Navigate(new Uri("page/xuexi/playvideo.xaml", UriKind.Relative));
-        }
-
         private void btn_fuxi_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Properties["video_id"] = "fuxi";
-            NavigationService.Navigate(new Uri("page/xuexi/playvideo.xaml", UriKind.Relative));
+            getResourceByChannelId(4);
         }
 
-        private void btn_qingan_Click(object sender, RoutedEventArgs e)
+        public void getResourceByChannelId(int channelId)
         {
-            Application.Current.Properties["video_id"] = "qingan";
-            NavigationService.Navigate(new Uri("page/xuexi/playvideo.xaml", UriKind.Relative));
+            var client = new RestClient();
+            client.EndPoint = Resturl + "/channel/" + channelId;
+            client.Method = HttpVerb.GET;
+            var jsonstr = client.MakeRequest();
+            playvideo pv = new playvideo(jsonstr);
+            NavigationService.Navigate(pv);
+        }
+
+        private void btn_minxiang_Click(object sender, RoutedEventArgs e)
+        {
+            getResourceByChannelId(5);
+        }
+
+        private void btn_fasong_Click(object sender, RoutedEventArgs e)
+        {
+            getResourceByChannelId(6);
         }
     }
 }

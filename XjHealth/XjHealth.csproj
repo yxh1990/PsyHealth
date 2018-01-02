@@ -35,9 +35,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="com.force.json, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\DLL\com.force.json.dll</HintPath>
+    </Reference>
+    <Reference Include="CustomControlLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\DLL\CustomControlLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="libNeuroSkyECG, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DLL\libNeuroSkyECG.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -116,6 +127,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="page\record\trainreport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="page\relax\relaxmain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -161,6 +176,9 @@
     </Compile>
     <Compile Include="page\record\recordmain.xaml.cs">
       <DependentUpon>recordmain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\record\trainreport.xaml.cs">
+      <DependentUpon>trainreport.xaml</DependentUpon>
     </Compile>
     <Compile Include="page\relax\relaxmain.xaml.cs">
       <DependentUpon>relaxmain.xaml</DependentUpon>
@@ -323,6 +341,20 @@
     <Resource Include="resource\img\user_tab_bg2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="lib\DLL\CustomControlLibrary.dll" />
+    <Resource Include="resource\img\reportBg.png" />
+    <Content Include="resource\video\fuxi.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resource\video\LsAVsCOBRB3T.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resource\video\qinggan.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resource\video\yinian.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="resource\img\SPCS_HXZS_SZ.bmp" />
     <Resource Include="resource\img\SPCS_HXZS_GG.bmp" />
     <Resource Include="resource\img\SPCS_HXZS_CQ.bmp" />
@@ -350,6 +382,7 @@
     <Resource Include="resource\img\chart_set_bg.png" />
     <Resource Include="resource\img\chart_stop_btnA.png" />
     <Resource Include="resource\img\chart_stop_btnB.png" />
+    <Content Include="lib\DLL\com.force.json.dll" />
     <Content Include="resource\mp3\background.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -394,7 +427,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PsyHealth\PsyHealth.csproj">
+      <Project>{15804010-95ee-40e9-9731-5503eaa75ed3}</Project>
+      <Name>PsyHealth</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="page\html\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

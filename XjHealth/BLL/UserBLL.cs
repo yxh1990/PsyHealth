@@ -81,13 +81,13 @@ namespace XjHealth.BLL
             ResultInfo result = new ResultInfo();
 
             result.Resultcode = obj["resultCode"].ToString();
-            result.Resultmsg = "修改密码失败异常";
-            if (result.Resultcode!="0")
+            result.Resultmsg = "修改密码操作成功";
+            result.Id = obj["id"].ToString();
+
+            if (result.Resultcode != "0")
             { 
-              result.Id = obj["id"].ToString();
               result.Resultmsg = obj["resultMsg"].ToString();
             }
-
             return result;
         }
     }

@@ -12,6 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XjHealth.lib;
+using Newtonsoft.Json.Linq;
+using System.Configuration;
+using XjHealth.Model;
+using com.force.json;
 
 namespace XjHealth.page.xuexi
 {
@@ -30,11 +35,14 @@ namespace XjHealth.page.xuexi
     /// </summary>
     public partial class playvideo : Page
     {
-        public videoName videotype = videoName.fuxi;
-
-        public playvideo()
+        public static string Resturl;
+        public string jstr = "";
+        public string videourl = "";
+        public playvideo(string jsonstr)
         {
             InitializeComponent();
+            jstr = jsonstr;
+            Resturl = ConfigurationManager.AppSettings["resturl"];
         }
         
         private void btn_backbefore_Click(object sender, RoutedEventArgs e)
@@ -44,67 +52,77 @@ namespace XjHealth.page.xuexi
 
         private void btn_play_Click(object sender, RoutedEventArgs e)
         {
-            string videourl = "resource/video/breathe.AVI";
-            switch (videotype)
-            {
-                case videoName.fuxi:
-                    videourl = "resource/video/breathe.AVI";
-                    break;
-                case videoName.qingan:
-                    videourl = "resource/video/emotion.AVI";
-                    break;
-                case videoName.yinian:
-                    videourl = "resource/video/attention.AVI";
-                    break;
-            }
-            this.videoScreenMediaElement.Source = new Uri(videourl, UriKind.Relative);
+            this.videoScreenMediaElement.Source = new Uri(videourl, UriKind.RelativeOrAbsolute);
             videoScreenMediaElement.Play();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            string video_id = Application.Current.Properties["video_id"].ToString();
-            if(video_id == "yinian")
-            {
-                this.btn_yinian.ImgPath = "/resource/img/learn_ynsd_C.png";
-                this.btn_yinian.IsEnabled = false;
-            }
-            if(video_id == "fuxi")
-            {
-                this.btn_fuxi.ImgPath = "/resource/img/learn_hxxz_C.png";
-                this.btn_fuxi.IsEnabled = false;
-            }
-            if(video_id == "qingan")
-            {
-                this.btn_qingan.ImgPath = "/resource/img/learn_qgzy_C.png";
-                this.btn_qingan.IsEnabled = false;
-            }
-            
+
+            var obj = JObject.Parse(jstr);
+            var psyResourceList = obj["flashChannelInfo"]["psyResourceList"];
+
+            btn_yinian.Content = psyResourceList[0]["resourceTitle"].ToString();
+            btn_yinian.Content = "意念锁定";
+            btn_yinian.Tag = psyResourceList[0]["resourceId"].ToString();
+            btn_fuxi.Content = "呼吸谐振";
+            btn_fuxi.Tag = psyResourceList[1]["resourceId"].ToString();
+            btn_qingan.Content = "情感转移";
+            btn_qingan.Tag = psyResourceList[2]["resourceId"].ToString();
+        }
+
+        public string getvideourl(string resourceId)
+        {
+            var client = new RestClient();
+            Userinfo user = App.CurrentUser;
+            client.EndPoint = Resturl + "/resource/visit";
+            client.Method = HttpVerb.POST;
+
+            JSONObject json = new JSONObject();
+            json.Put("resourceId", resourceId);
+            json.Put("userId", user.Id);
+
+            client.PostData = json.ToString();
+            var jsonstr = client.MakeRequest();
+            var obj = JObject.Parse(jsonstr);
+            //MessageBox.Show(jsonstr);
+
+            return obj["detailInfo"]["resourcePath"].ToString();
         }
 
         private void btn_fuxi_Click(object sender, RoutedEventArgs e)
         {
-            this.btn_fuxi.ImgPath = "/resource/img/learn_hxxz_C.png";
+            this.btn_fuxi.ImgPath = "/resource/img/learn_ynsd_C.png";
             this.btn_fuxi.IsEnabled = false;
 
             this.btn_yinian.IsEnabled = true;
             this.btn_qingan.IsEnabled = true;
 
-            videotype = videoName.fuxi;
+            string resourceId = ((ImageButton)sender).Tag.ToString();
+            videourl = "resource/video/fuxi.mp4";
 
-            this.videoScreenMediaElement.Stop();
+            this.videoScreenMediaElement.Source = new Uri(videourl, UriKind.RelativeOrAbsolute);
+            videoScreenMediaElement.Play();
+
+            //this.videoScreenMediaElement.Stop();
         }
 
         private void btn_qingan_Click(object sender, RoutedEventArgs e)
         {
-            this.btn_qingan.ImgPath = "/resource/img/learn_qgzy_C.png";
+            this.btn_qingan.ImgPath = "/resource/img/learn_ynsd_C.png";
             this.btn_qingan.IsEnabled = false;
 
             this.btn_yinian.IsEnabled = true;
             this.btn_fuxi.IsEnabled = true;
 
-            videotype = videoName.qingan;
-            this.videoScreenMediaElement.Stop();
+            string resourceId = ((ImageButton)sender).Tag.ToString();
+            //videourl = getvideourl(resourceId);
+            videourl = "resource/video/qinggan.mp4";
+
+            this.videoScreenMediaElement.Source = new Uri(videourl, UriKind.RelativeOrAbsolute);
+            videoScreenMediaElement.Play();
+
+            //this.videoScreenMediaElement.Stop();
         }
 
         private void btn_yinian_Click(object sender, RoutedEventArgs e)
@@ -115,9 +133,14 @@ namespace XjHealth.page.xuexi
             this.btn_fuxi.IsEnabled = true;
             this.btn_qingan.IsEnabled = true;
 
-            videotype = videoName.yinian;
+            string resourceId = ((ImageButton)sender).Tag.ToString();
+            //videourl = getvideourl(resourceId);
+            videourl = "resource/video/yinian.mp4";
 
-            this.videoScreenMediaElement.Stop();
+            this.videoScreenMediaElement.Source = new Uri(videourl, UriKind.RelativeOrAbsolute);
+            videoScreenMediaElement.Play();
+
+            //this.videoScreenMediaElement.Stop();
         }
     }
 }

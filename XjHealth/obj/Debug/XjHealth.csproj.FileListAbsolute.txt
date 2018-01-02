@@ -1,3 +1,15 @@
+E:\c#\PsyHealth\XjHealth\bin\Debug\resource\video\fuxi.mp4
+E:\c#\PsyHealth\XjHealth\bin\Debug\resources\mp3\background.mp3
+E:\c#\PsyHealth\XjHealth\bin\Debug\resources\video\attention.AVI
+E:\c#\PsyHealth\XjHealth\bin\Debug\resources\video\breathe.AVI
+E:\c#\PsyHealth\XjHealth\bin\Debug\resources\video\emotion.AVI
+E:\c#\PsyHealth\XjHealth\bin\Debug\resources\video\huxi_chuiqiu.avi
+E:\c#\PsyHealth\XjHealth\bin\Debug\resources\video\huxi_gangguang.avi
+E:\c#\PsyHealth\XjHealth\bin\Debug\resources\video\huxi_shalou.avi
+E:\c#\PsyHealth\XjHealth\bin\Debug\resources\video\huxi_shanzi.avi
+E:\c#\PsyHealth\XjHealth\bin\Debug\resource\video\LsAVsCOBRB3T.mp4
+E:\c#\PsyHealth\XjHealth\bin\Debug\resource\video\qinggan.mp4
+E:\c#\PsyHealth\XjHealth\bin\Debug\resource\video\yinian.mp4
 E:\c#\PsyHealth\XjHealth\bin\Debug\resource\mp3\background.mp3
 E:\c#\PsyHealth\XjHealth\bin\Debug\resource\video\attention.AVI
 E:\c#\PsyHealth\XjHealth\bin\Debug\resource\video\emotion.AVI
@@ -9,8 +21,14 @@ E:\c#\PsyHealth\XjHealth\bin\Debug\resource\video\breathe.AVI
 E:\c#\PsyHealth\XjHealth\bin\Debug\XjHealth.exe.config
 E:\c#\PsyHealth\XjHealth\bin\Debug\XjHealth.exe
 E:\c#\PsyHealth\XjHealth\bin\Debug\XjHealth.pdb
+E:\c#\PsyHealth\XjHealth\bin\Debug\com.force.json.dll
+E:\c#\PsyHealth\XjHealth\bin\Debug\CustomControlLibrary.dll
 E:\c#\PsyHealth\XjHealth\bin\Debug\libNeuroSkyECG.dll
 E:\c#\PsyHealth\XjHealth\bin\Debug\Newtonsoft.Json.dll
+E:\c#\PsyHealth\XjHealth\bin\Debug\PsyHealth.exe
+E:\c#\PsyHealth\XjHealth\bin\Debug\DynamicDataDisplay.dll
+E:\c#\PsyHealth\XjHealth\bin\Debug\WPFVisifire.Charts.dll
+E:\c#\PsyHealth\XjHealth\bin\Debug\PsyHealth.pdb
 E:\c#\PsyHealth\XjHealth\obj\Debug\XjHealth.csprojResolveAssemblyReference.cache
 E:\c#\PsyHealth\XjHealth\obj\Debug\MainWindow.g.cs
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\cepin\cepin.g.cs
@@ -20,6 +38,7 @@ E:\c#\PsyHealth\XjHealth\obj\Debug\page\cepin\cepinstart.g.cs
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\Index.g.cs
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\jiance\jiancemain.g.cs
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\record\recordmain.g.cs
+E:\c#\PsyHealth\XjHealth\obj\Debug\page\record\trainreport.g.cs
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\relax\relaxmain.g.cs
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\train\trainmain.g.cs
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\xuexi\learnmain.g.cs
@@ -37,6 +56,7 @@ E:\c#\PsyHealth\XjHealth\obj\Debug\page\cepin\cepinstart.baml
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\Index.baml
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\jiance\jiancemain.baml
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\record\recordmain.baml
+E:\c#\PsyHealth\XjHealth\obj\Debug\page\record\trainreport.baml
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\relax\relaxmain.baml
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\train\trainmain.baml
 E:\c#\PsyHealth\XjHealth\obj\Debug\page\xuexi\learnmain.baml

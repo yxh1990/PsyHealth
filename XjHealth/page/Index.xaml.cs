@@ -17,7 +17,7 @@ using Newtonsoft.Json.Linq;
 using XjHealth.BLL;
 using XjHealth.Model;
 using XjHealth.common;
-
+using com.force.json;
 
 namespace XjHealth.page
 {
@@ -34,6 +34,60 @@ namespace XjHealth.page
             Resturl = ConfigurationManager.AppSettings["resturl"];
             this.lbl_time.Content = dateFormat.formateToday();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Userinfo user = App.CurrentUser;
+            if(user.Id>0)
+            {
+                setenablePage();
+                this.lbl_username.Content = user.LogonName;
+            }
+            else
+            {
+                setDisablePage();
+            }
+        }
+
+        private void setenablePage()
+        {
+            this.btn_usertologin.Visibility = Visibility.Hidden;
+            this.btn_userlogout.Visibility = Visibility.Visible;
+
+            this.btn_cepin.ImgPath = "/resource/img/index_scale_A.png";
+            this.btn_cepin.IsEnabled = true;
+
+            this.btn_jiance.ImgPath = "/resource/img/index_monitor_A.png";
+            this.btn_jiance.IsEnabled = true;
+
+            this.btn_xunlian.ImgPath = "/resource/img/index_train_A.png";
+            this.btn_xunlian.IsEnabled = true;
+
+            this.btn_jilu.ImgPath = "/resource/img/index_record_A.png";
+            this.btn_jilu.IsEnabled = true;
+
+            this.btn_geren.ImgPath = "/resource/img/index_user_D.png";
+            this.btn_geren.IsEnabled = true;
+        }
+
+        private void setDisablePage()
+        {
+            this.btn_cepin.ImgPath = "/resource/img/index_scale_D.png";
+            this.btn_cepin.IsEnabled = false;
+
+            this.btn_jiance.ImgPath = "/resource/img/index_monitor_D.png";
+            this.btn_jiance.IsEnabled = false;
+
+            this.btn_xunlian.ImgPath = "/resource/img/index_train_D.png";
+            this.btn_xunlian.IsEnabled = false;
+
+            this.btn_jilu.ImgPath = "/resource/img/index_record_D.png";
+            this.btn_jilu.IsEnabled = false;
+
+            this.btn_geren.ImgPath = "/resource/img/index_user_D.png";
+            this.btn_geren.IsEnabled = false;
+        }
+
 
         /// <summary>
         /// 展示用户信息
@@ -143,21 +197,18 @@ namespace XjHealth.page
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
-           //string resturl=ConfigurationManager.AppSettings["resturl"];
            var client = new RestClient();
            client.EndPoint = Resturl + "/person/login"; 
            client.Method = HttpVerb.POST;
-            /* 
-             * 错误的json格式,这种请求的发送方式会失败
-             * {'name':'admin','password':'admin'} 
-             * 正确的格式里面的双引号不能改成单引号
-             * "{\"name\":\"admin\",\"password\":\"admin\"}"
-             * obj=JObject.Parse(jsonstr)
-             * 可以像js一样操作obj["pi"]["name"].ToString()
-             */
-            string username = this.txtusername.Text.Trim();
-            string password = this.txtpassword.Password.Trim();
-            client.PostData = "{\"name\":\"{0}\",\"password\":\"{1}\"}".Replace("{0}", username).Replace("{1}", password);
+          
+           string username = this.txtusername.Text.Trim();
+           string password = this.txtpassword.Password.Trim();
+
+            JSONObject json = new JSONObject();
+            json.Put("name", username);
+            json.Put("password", password);
+            client.PostData = json.ToString();
+            
             var jsonstr = client.MakeRequest();
             ResultInfo result = ub.check_user_login(jsonstr);
             if (result.Resultmsg!="")
@@ -169,8 +220,7 @@ namespace XjHealth.page
                 //用户登录成功
                 this.loginwindow.Visibility = Visibility.Hidden;
                 this.lbl_username.Content = username;
-                this.btn_usertologin.Visibility = Visibility.Hidden;
-                this.btn_userlogout.Visibility = Visibility.Visible;
+                setenablePage();
             }
 
         }
@@ -180,7 +230,6 @@ namespace XjHealth.page
             var client = new RestClient();
             client.EndPoint = Resturl + "/person/updatepwd";
             client.Method = HttpVerb.POST;
-            //"\"" + dc.ColumnName + "\":\"" + dr[dc].ToString() + "\",";
             string oldpasswd = this.txtoldpasswd.Password;
             string pass1 = this.txtnewpasswd1.Password;
             string pass2 = this.txtnewpasswd2.Password;
@@ -190,14 +239,12 @@ namespace XjHealth.page
                 return;
             }
             client.PostData = "{\"id\":" + App.CurrentUser.Id +",\"oldPwd\":\""+ oldpasswd + "\",\"newPwd\":\"" + pass2 + "\"}";
-            //MessageBox.Show(client.PostData);
             var jsonstr = client.MakeRequest();
             ResultInfo result = ub.check_user_updatepass(jsonstr);
-            MessageBox.Show(result.Resultmsg);
             if (result.Id == "0")
             {
-                this.loginwindow.Visibility = Visibility.Hidden;
-                this.userinfowindow.Visibility = Visibility.Hidden;
+               this.loginwindow.Visibility = Visibility.Hidden;
+               this.userinfowindow.Visibility = Visibility.Hidden;
             }
         }
 
@@ -225,6 +272,7 @@ namespace XjHealth.page
             this.btn_usertologin.Visibility = Visibility.Visible;
             this.btn_userlogout.Visibility = Visibility.Hidden;
             lbl_username.Content = "游客";
+            setDisablePage();
         }
 
         private void btn_cancelupdatepass_Click(object sender, RoutedEventArgs e)

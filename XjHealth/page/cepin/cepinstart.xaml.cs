@@ -19,9 +19,18 @@ namespace XjHealth.page.cepin
     /// </summary>
     public partial class cepinstart : Page
     {
-        public cepinstart()
+        public int sid = 0;
+        public cepinstart(int id)
         {
             InitializeComponent();
+            sid = id;
+            showcepindata();
+        }
+
+        public void showcepindata()
+        {
+            this.stitle.Content = Application.Current.Properties["stitle"];
+            this.sdesc.Text = Application.Current.Properties["sdesc"].ToString();
         }
 
         private void btn_backmain_Click(object sender, RoutedEventArgs e)
@@ -31,7 +40,8 @@ namespace XjHealth.page.cepin
 
         private void btn_start_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("page/cepin/cepin.xaml", UriKind.Relative));
+            cepin cp = new cepin(sid); 
+            NavigationService.Navigate(cp);
         }
     }
 }

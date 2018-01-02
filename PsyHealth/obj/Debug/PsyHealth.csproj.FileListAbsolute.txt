@@ -11,7 +11,6 @@ E:\c#\PsyHealth\PsyHealth\bin\Debug\PsyHealth.exe
 E:\c#\PsyHealth\PsyHealth\bin\Debug\PsyHealth.pdb
 E:\c#\PsyHealth\PsyHealth\bin\Debug\DynamicDataDisplay.dll
 E:\c#\PsyHealth\PsyHealth\bin\Debug\WPFVisifire.Charts.dll
-E:\c#\PsyHealth\PsyHealth\obj\Debug\PsyHealth.csprojResolveAssemblyReference.cache
 E:\c#\PsyHealth\PsyHealth\obj\Debug\Index.g.cs
 E:\c#\PsyHealth\PsyHealth\obj\Debug\JianceWindow.g.cs
 E:\c#\PsyHealth\PsyHealth\obj\Debug\RecordWindow.g.cs
@@ -37,3 +36,4 @@ E:\c#\PsyHealth\PsyHealth\obj\Debug\PsyHealth.Properties.Resources.resources
 E:\c#\PsyHealth\PsyHealth\obj\Debug\PsyHealth.csproj.GenerateResource.Cache
 E:\c#\PsyHealth\PsyHealth\obj\Debug\PsyHealth.exe
 E:\c#\PsyHealth\PsyHealth\obj\Debug\PsyHealth.pdb
+E:\c#\PsyHealth\PsyHealth\obj\Debug\PsyHealth.csprojResolveAssemblyReference.cache

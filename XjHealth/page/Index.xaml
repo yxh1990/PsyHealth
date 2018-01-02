@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:XjHealth.page"
         xmlns:locallib="clr-namespace:XjHealth.lib"
         mc:Ignorable="d"
-        Title="心际之芯" Width="1366" Height="768">
+        Title="心际之芯" Width="1366" Height="768" Loaded="Page_Loaded">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -30,13 +30,13 @@
         </StackPanel>
 
         <!--七个图标按钮-->
-        <locallib:ImageButton Canvas.Top="460" Canvas.Left="200"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_scale_A.png" MouseOverImgPath="/resource/img/index_scale_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_cepin" Click="btn_cepin_Click" />
+        <locallib:ImageButton Canvas.Top="460" Canvas.Left="200"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_scale_A.png" MouseOverImgPath="/resource/img/index_scale_B.png" DisableImgPath="/resource/img/index_scale_D.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_cepin" Click="btn_cepin_Click" />
         <locallib:ImageButton Canvas.Top="320" Canvas.Left="280"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_learn_A.png" MouseOverImgPath="/resource/img/index_learn_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_xuexi" Click="btn_xuexi_Click" />
         <locallib:ImageButton Canvas.Top="220" Canvas.Left="420"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_monitor_A.png" MouseOverImgPath="/resource/img/index_monitor_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_jiance" Click="btn_jiance_Click" />
         <locallib:ImageButton Canvas.Top="180" Canvas.Left="590"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_train_A.png" MouseOverImgPath="/resource/img/index_train_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_xunlian" Click="btn_xunlian_Click" />
         <locallib:ImageButton Canvas.Top="210" Canvas.Left="760"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_relax_A.png" MouseOverImgPath="/resource/img/index_relax_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_fangsong" Click="btn_fangsong_Click" />
         <locallib:ImageButton Canvas.Top="300" Canvas.Left="920"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_record_A.png" MouseOverImgPath="/resource/img/index_record_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_jilu" Click="btn_jilu_Click" />
-        <locallib:ImageButton Canvas.Top="430" Canvas.Left="1050"  Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_user_A.png" MouseOverImgPath="/resource/img/index_user_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_geren" Click="btn_geren_Click"/>
+        <locallib:ImageButton Canvas.Top="430" Canvas.Left="1050" Width="140" Height="157" Cursor="Hand"  ImgPath="/resource/img/index_user_A.png" MouseOverImgPath="/resource/img/index_user_B.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_geren" Click="btn_geren_Click"/>
 
         <!--弹出用户登录窗口-->
         <StackPanel Canvas.Top="0" Canvas.Left="0" x:Name="loginwindow" Visibility="Hidden">

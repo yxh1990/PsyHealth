@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>答案记录</title>
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+     document.oncontextmenu = new Function("event.returnValue=false;");
+     document.onselectstart = new Function("event.returnValue=false;");
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    </script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" id="test1"></script>
+    <script>
+        var srcc = "js/answer_" + GetQueryString("uid") + ".js";
+        $("#test1").attr("src", srcc);
+        $.getScript(srcc, function (){
+            var scaleList = result["scaleInfo"]["firstScaleItem"];
+            var htmlstr = "";
+            for (var t=0; t<scaleList.length;t++)
+            {
+                var shtmlstr = "<li style='font-size:14px;color:#444;'>" + scaleList[t].text + "</li>";
+                var choicestr = "";
+                var choiceobj = scaleList[t]["scaleChoices"];
+                for (var j = 0; j <choiceobj.length;j++)
+                {
+                    if (choiceobj[j]["isChecked"])
+                    {
+                        choicestr = choicestr + "<li><input type='radio' checked />" + choiceobj[j].visDesc + "</li>";
+                    }
+                    else
+                    {
+                        choicestr = choicestr + "<li><input type='radio' disabled />" + choiceobj[j].visDesc + "</li>";
+                    }
+                }
+                var tempstr = shtmlstr+choicestr;
+                htmlstr = htmlstr+tempstr;
+            }
+            $("#sds_list").html(htmlstr);
+        });
+
+        $(document).ready(function () {
+            $("#liname").html("姓名：" + GetQueryString("uname"));
+            $("#lidate").html("测试日期: " + GetQueryString("stime"));
+        });
+    </script>
+</head>
+<body style="background:url(img/reportBg.png) no-repeat #1e73c6;">
+    <div>
+        <div class="test_header" style="overflow-y:scroll;width:900px;height:768px">
+            <div class="sds_msg">
+                <ul>
+                    <li id="liname">姓名</li>
+                    <li id="lidate">测试日期</li>
+                </ul>
+            </div>
+            <div style="background:url(/occ/images/test_line.png) repeat-x; height:2px; width:850px; margin:0 auto; margin-top:12px;"></div>
+            <div class="sds_list">
+                <ul id="sds_list">
+                                
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

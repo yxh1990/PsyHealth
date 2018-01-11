@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>测试报告</title>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+ <script type="text/javascript">
+    document.oncontextmenu=new Function("event.returnValue=false;");
+    document.onselectstart = new Function("event.returnValue=false;");
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+ </script>
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+ <script type="text/javascript">
+     $(document).ready(function() {
+         $("#mview").attr("src","report/cover.html?uid="+GetQueryString("uid"));
+         $("#acover").attr("href", "report/cover.html?uid=" + GetQueryString("uid"));
+         $("#asnps").attr("href", "report/snps.html?uid=" + GetQueryString("uid"));
+         $("#aexplain").attr("href", "report/explain.html?uid=" + GetQueryString("uid"));
+     });
+ </script>
+</head>
+<body style="background:url(img/reportBg.png) no-repeat #1e73c6;">
+
+<div class="content">
+	<div class="rep_container">
+		<div class="sidebar">
+			<ul>
+			  <li style="background:url(img/tag_bg1.png);"><a id="acover" href="report/cover.html" target="mview">报告封面</a></li>
+			  <li style="background:url(img/tag_bg3.png);"><a id="asnps" href="report/snps.html" target="mview">量表简介</a></li>
+              <li style="background:url(img/tag_bg4.png);"><a id="aexplain" href="report/explain.html" target="mview">结果解释</a></li>
+			</ul>
+		</div>
+		<div class="main" style="overflow-y:scroll;height:800px">
+			<iframe name="mview" id="mview" src="" width="800" height="911" marginheight="0" marginwidth="0" frameborder="0" />
+		</div>
+	</div>
+</div>
+</body>
+</html>

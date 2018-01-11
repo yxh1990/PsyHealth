@@ -22,7 +22,7 @@
         <!--结束测试-->
         <StackPanel Width="935" Height="425" Canvas.Left="190" Canvas.Top="200">
             <Label Style="{StaticResource ScaleTitle}" >测评结果及建议</Label>
-            <TextBlock Padding="100,0,0,0"  Style="{StaticResource ScaleDesc}" TextWrapping="Wrap" Width="900" Height="425" FontSize="16" LineHeight="30" x:Name="sdesc">
+            <TextBlock Padding="100,0,0,0"  Style="{StaticResource ScaleDesc}" TextWrapping="WrapWithOverflow" Width="900" Height="425" FontSize="16" LineHeight="30" x:Name="sdesc">
                
             </TextBlock>
         </StackPanel>

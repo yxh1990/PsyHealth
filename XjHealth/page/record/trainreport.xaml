@@ -21,12 +21,12 @@
     </Page.Background>
     <Canvas>
         <WindowsFormsHost Panel.ZIndex="1">
-            <wf:WebBrowser x:Name="webBrowser1" Width="1366" Height="768"/>
+            <wf:WebBrowser x:Name="webBrowser1" Width="1366" Height="768" ScrollBarsEnabled="False" />
         </WindowsFormsHost>
         <WindowsFormsHost Panel.ZIndex="10" Canvas.Top="725" Canvas.Left="1150">
             <ElementHost>
                 <!--返回主页-->
-                <locallib:ImageButton  Width="130" Height="35" ImgPath="/resource/img/exit_index.png" MouseOverImgPath="/resource/img/exit_index.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_backmain" Click="btn_backmain_Click" Cursor="Hand" />
+                <locallib:ImageButton  Width="130" Height="35" ImgPath="/resource/img/exit_before.png" MouseOverImgPath="/resource/img/exit_before.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_backmain" Click="btn_backmain_Click" Cursor="Hand" />
             </ElementHost>
         </WindowsFormsHost>
     </Canvas>

@@ -144,27 +144,54 @@ namespace XjHealth.page.record
         private void btn_replay_Click(object sender, RoutedEventArgs e)
         {
             Button btnreplay = (Button)sender;
-            //MessageBox.Show("回放"+ btnreplay.Tag+"");
+            int hid = int.Parse(btnreplay.Tag.ToString());
+            replay re = new replay(hid, "heartBeatList");
+            NavigationService.Navigate(re);
         }
 
         private void btn_report_Click(object sender, RoutedEventArgs e)
         {
             Button btnreport = (Button)sender;
-            //MessageBox.Show("训练报告" + btnreport.Tag + "");
+            string id=btnreport.Tag.ToString();
+            getxunliandata(id);
             this.grid_testreport.Visibility = Visibility.Visible;
+        }
+
+        private void getxunliandata(string rid)
+        {
+            var client = new RestClient();
+            client.EndPoint = Resturl+"/train/report/"+ rid;
+            client.Method = HttpVerb.GET;
+            var jsonstr = client.MakeRequest();
+            var obj = JObject.Parse(jsonstr);
+
+            this.traincon.Content = obj["tr"]["trainName"];
+            this.traindu.Content = obj["tr"]["hard"];
+            this.trainstartTime.Content = obj["tr"]["beginTime"];
+            this.trainendTime.Content = obj["tr"]["endTime"];
+            this.txtcon.Text= "综合评价分数\r\n\0" + obj["tr"]["scoreDesc"] + "\r\n\r\n稳定指数\r\n\0" + obj["tr"]["proposal"]+ "\r\n\r\n情绪指数\r\n\0" + obj["tr"]["estimate"];
         }
 
         private void btn_testAnswer_Click(object sender, RoutedEventArgs e)
         {
             Button btnanswer = (Button)sender;
-            MessageBox.Show("答卷" + btnanswer.Tag + "");
+            int aid = int.Parse(btnanswer.Tag.ToString());
+            string time = btnanswer.Uid.ToString();
+            answerreport ap = new answerreport(aid,time);
+            NavigationService.Navigate(ap);
         }
 
         private void btn_testReport_Click(object sender, RoutedEventArgs e)
         {
             Button btntestreport= (Button)sender;
-            //MessageBox.Show("测评报告" + btntestreport.Tag + "");
-            NavigationService.Navigate(new Uri("page/record/trainreport.xaml", UriKind.Relative));
+            int tid = int.Parse(btntestreport.Tag.ToString());
+            trainreport tr = new trainreport(tid);
+            NavigationService.Navigate(tr);
+        }
+
+        private void btn_guanbi_Click(object sender, RoutedEventArgs e)
+        {
+            this.grid_testreport.Visibility = Visibility.Hidden;
         }
     }
 

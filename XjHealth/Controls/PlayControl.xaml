@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="XjHealth.Controls.PlayControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="80" d:DesignWidth="1000" SizeChanged="UserControl_SizeChanged" Loaded="UserControl_Loaded">
+    <Control.Background>
+        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#4B5463" Offset="0.2"/>
+            <GradientStop Color="#000000" Offset="1"/>
+        </LinearGradientBrush>
+    </Control.Background>
+    <Control.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/style/maincss.xaml"/>
+                <ResourceDictionary Source="/style/resStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Control.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Left" Margin="20,0" Text="x"  FontSize="16" Padding="0,4,0,0" ToolTip="停止"  FontWeight="Bold" Style="{StaticResource TextBlockStateStyle}" Foreground="#CCCCCC" TextAlignment="Center" Width="24" Height="24" MouseDown="TextBlock_MouseDown" />
+        <TextBlock Grid.Row="1" HorizontalAlignment="Left" Margin="50,0" Text="9"  FontSize="16" Padding="0,4,0,0" ToolTip="上一曲"  FontWeight="Bold" Style="{StaticResource TextBlockStateStyle}" Foreground="#CCCCCC" TextAlignment="Center" Width="24" Height="24" MouseDown="TextBlock_MouseDown_1" />
+        <TextBlock Grid.Row="1" HorizontalAlignment="Left" Margin="80,0" Text="4" Name="btnPlay" Padding="0,0,0,0" FontSize="36" ToolTip="播放"   FontWeight="Bold" Style="{StaticResource TextBlockStateStyle}" Foreground="#CCCCCC" TextAlignment="Center" Width="36" Height="36" MouseDown="btnPlay_MouseDown" />
+        <TextBlock Grid.Row="1" HorizontalAlignment="Left" Margin="124,0" Text=":"  FontSize="16" Padding="0,4,0,0" ToolTip="下一曲" FontWeight="Bold" Style="{StaticResource TextBlockStateStyle}" Foreground="#CCCCCC" TextAlignment="Center" Width="24" Height="24" MouseDown="TextBlock_MouseDown_2" />
+        <Image Grid.Row="1" Name="imgVolume" Width="20" Height="10" HorizontalAlignment="Left" ToolTip="静音" Margin="170,0" Source="/resource/img/volume.png" MouseDown="Image_MouseDown" />
+        <Canvas Name="volume" Width="100" Height="15" Grid.Row="1" HorizontalAlignment="Left" Margin="200,0" >
+            <Rectangle Width="100" Name="volumeBG" Height="5" Canvas.Left="0" RadiusX="3" RadiusY="3" Canvas.Top="5" MouseDown="volumeBG_MouseDown">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#333333" Offset="0"/>
+                        <GradientStop Color="#4B5463" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Rectangle Width="0" Name="volumeMask" Height="5" Canvas.Left="0" RadiusX="3" RadiusY="3" Canvas.Top="5" MouseDown="volumeMask_MouseDown">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                        <GradientStop Color="#666666"  Offset="0"/>
+                        <GradientStop Color="#DDDDDD" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Ellipse Name="btnVolume" Canvas.Top="2" Canvas.Left="0" Width="12" Height="12" Stroke="#666666">
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                        <GradientStop Color="#777777" Offset="0"/>
+                        <GradientStop Color="#4B5463" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Canvas>
+        <Canvas Name="positionBG"  Width="auto" Height="30" VerticalAlignment="Top" Margin="5,3,5,0" Grid.Row="0" >
+            <Rectangle Width="auto" Name="position" Height="5" Canvas.Left="0" RadiusX="3" RadiusY="3" Canvas.Top="5" MouseDown="Rectangle_MouseDown_1" MouseEnter="position_MouseEnter" MouseLeave="position_MouseLeave">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#888888" Offset="0"/>
+                        <GradientStop Color="#4B5463" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Width="0" Name="positionMask" Height="5" Canvas.Left="0" RadiusX="3" RadiusY="3" Canvas.Top="5" MouseDown="Rectangle_MouseDown_1" MouseEnter="positionMask_MouseEnter" MouseLeave="positionMask_MouseLeave">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                        <GradientStop Color="#999999"  Offset="0"/>
+                        <GradientStop Color="#DDDDDD" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Ellipse Name="btnPostion" Canvas.Top="1" Canvas.Left="0" Width="12" Height="12" Stroke="#dddddd" Visibility="Hidden">
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                        <GradientStop Color="#aaaaaa" Offset="0"/>
+                        <GradientStop Color="#4B5463" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock Name="startTime" Text="00:00" Canvas.Left="10" Canvas.Top="12" Foreground="#CCCCCC"/>
+            <TextBlock Name="status" Text="" Canvas.Left="100" Canvas.Top="12" Foreground="#CCCCCC"/>
+            <TextBlock Name="totalTime" Text="00:00" Canvas.Right="10" Canvas.Top="12" Foreground="#CCCCCC"/>
+        </Canvas>
+    </Grid>
+</UserControl>

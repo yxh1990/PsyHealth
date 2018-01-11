@@ -53,7 +53,12 @@ namespace XjHealth.page.cepin
 
             for (int t = 0; t < obj["report"]["personTestVerdictList"].Count(); t++)
             {
-               sdesc.Text = sdesc.Text + obj["report"]["personTestVerdictList"][t]["verdictName"] +"\r\n"+obj["report"]["personTestVerdictList"][t]["verdictDesc"] + "\r\n"+ obj["report"]["personTestVerdictList"][t]["proposal"] + "\r\n";
+               sdesc.Text = sdesc.Text + obj["report"]["personTestVerdictList"][t]["verdictName"] +"\r\n"+obj["report"]["personTestVerdictList"][t]["verdictDesc"] + "\r\n"+ obj["report"]["personTestVerdictList"][t]["proposal"] + "\r\n"+ obj["report"]["personTestVerdictList"][t]["verdictName"] + "\r\n" + obj["report"]["personTestVerdictList"][t]["verdictDesc"] + "\r\n" + obj["report"]["personTestVerdictList"][t]["proposal"] + "\r\n"+ obj["report"]["personTestVerdictList"][t]["verdictName"] + "\r\n" + obj["report"]["personTestVerdictList"][t]["verdictDesc"] + "\r\n" + obj["report"]["personTestVerdictList"][t]["proposal"] + "\r\n";
+            }
+
+            if (sdesc.Text.Length>240)
+            {
+                sdesc.Text = sdesc.Text.Substring(0,240)+"......";
             }
         }
 

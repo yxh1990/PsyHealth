@@ -18,6 +18,7 @@ using XjHealth.BLL;
 using XjHealth.Model;
 using XjHealth.common;
 using com.force.json;
+using System.IO;
 
 namespace XjHealth.page
 {

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>报告封面</title>
+<link href="../css/common.css" rel="stylesheet" type="text/css">
+ <script type="text/javascript">
+    document.oncontextmenu = new Function("event.returnValue=false;");
+    document.onselectstart = new Function("event.returnValue=false;");
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+ </script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" id="test1"></script>
+    <script>
+        var srcc = "../js/config_"+GetQueryString("uid")+".js";
+        $("#test1").attr("src", srcc);
+        $.getScript(srcc, function (){
+            var userobj = result["report"];
+            $("#sname").html(userobj["scaleName"]);
+            $("#username").html("姓名：" + userobj["personName"]);
+            $("#usersex").html("性别：" + userobj["personSex"]);
+            $("#useredu").html("年龄：" + userobj["personSex"]);
+            $("#usersex").html("学历：" + userobj["edu"]);
+            $("#userdate").html("出生日期：" + userobj["birthDate"]);
+            $("#usertesttime").html("测试时间：" + userobj["testBeginTime"]);
+        });
+    </script>
+</head>
+<body>
+
+<div class="cover_bg">
+    <div class="results">
+        <h1>测试结果报告</h1>
+        <h2 id="sname"></h2>
+    </div>
+    <div class="cover_list">
+    	<ul>
+            <li id="username">姓名：张军</li>
+            <li id="usersex">性别：男</li>
+            <!--<li id="userage">年龄：47岁</li>-->
+            <li id="useredu">学历：初中</li>
+            <li id="userdate">出生日期：1968-12-12</li>
+            <!--<li id="userpro">职业：</li>-->
+            <li id="usertesttime">测试时间：2015-12-06 16:18:46</li>
+    	</ul>
+    </div>
+</div>
+
+</body>
+</html>

@@ -43,6 +43,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DLL\CustomControlLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="DynamicDataDisplay, Version=0.3.0.0, Culture=neutral, PublicKeyToken=5b7d744a7263923f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\DLL\DynamicDataDisplay.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>lib\DLL\Interop.WMPLib.dll</HintPath>
+    </Reference>
     <Reference Include="libNeuroSkyECG, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DLL\libNeuroSkyECG.dll</HintPath>
@@ -80,6 +89,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\PlayControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -91,10 +104,19 @@
     <Compile Include="BLL\UserBLL.cs" />
     <Compile Include="common\dateFormat.cs" />
     <Compile Include="common\utils.cs" />
+    <Compile Include="Controls\PlayControl.xaml.cs">
+      <DependentUpon>PlayControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ecg\EcgHelper.cs" />
+    <Compile Include="lib\AppPropertys.cs" />
     <Compile Include="lib\ImageButton.cs" />
     <Compile Include="lib\JsonHelper.cs" />
+    <Compile Include="lib\musicPlayer.cs" />
+    <Compile Include="lib\PlayController.cs" />
     <Compile Include="lib\RestClient.cs" />
+    <Compile Include="lib\Song.cs" />
+    <Compile Include="lib\WindowsMediaPlay.cs" />
+    <Compile Include="lib\WinForm.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -123,11 +145,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="page\record\answerreport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="page\record\recordmain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="page\record\replay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="page\record\trainreport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="page\relax\MusicPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="style\maincss.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="style\resStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -174,11 +212,20 @@
     <Compile Include="page\jiance\jiancemain.xaml.cs">
       <DependentUpon>jiancemain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="page\record\answerreport.xaml.cs">
+      <DependentUpon>answerreport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="page\record\recordmain.xaml.cs">
       <DependentUpon>recordmain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="page\record\replay.xaml.cs">
+      <DependentUpon>replay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="page\record\trainreport.xaml.cs">
       <DependentUpon>trainreport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\relax\MusicPlayer.xaml.cs">
+      <DependentUpon>MusicPlayer.xaml</DependentUpon>
     </Compile>
     <Compile Include="page\relax\relaxmain.xaml.cs">
       <DependentUpon>relaxmain.xaml</DependentUpon>
@@ -343,6 +390,61 @@
   <ItemGroup>
     <Content Include="lib\DLL\CustomControlLibrary.dll" />
     <Resource Include="resource\img\reportBg.png" />
+    <Content Include="lib\DLL\DynamicDataDisplay.dll" />
+    <Content Include="lib\DLL\Interop.WMPLib.dll" />
+    <Content Include="page\html\css\common.css" />
+    <Resource Include="page\html\img\book.png" />
+    <Content Include="page\html\css\style.css" />
+    <Content Include="page\html\img\cd-icon-arrow.svg" />
+    <Resource Include="page\html\img\exit_index.png" />
+    <Resource Include="page\html\img\lIhwduj.png" />
+    <Resource Include="page\html\img\LIqj0nr.png" />
+    <Resource Include="page\html\img\listen.png" />
+    <Resource Include="page\html\img\play.png" />
+    <Resource Include="page\html\img\qqdoddi.png" />
+    <Resource Include="page\html\img\record.png" />
+    <Resource Include="page\html\img\reportBg.png" />
+    <Resource Include="page\html\img\tag_bg1.png" />
+    <Resource Include="page\html\img\tag_bg2.png" />
+    <Resource Include="page\html\img\tag_bg3.png" />
+    <Resource Include="page\html\img\tag_bg4.png" />
+    <Resource Include="page\html\img\tag_bg6.png" />
+    <Resource Include="page\html\img\xlBv5aR.png" />
+    <Resource Include="page\html\img\snps_img.png" />
+    <Resource Include="page\html\img\relax_list.png" />
+    <Resource Include="page\html\img\exit_before.png" />
+    <Resource Include="page\html\img\stop2.gif" />
+    <Content Include="page\html\js\answer_2.js" />
+    <Content Include="page\html\js\config_2.js" />
+    <Content Include="page\html\js\jplayer\html5media.min.js" />
+    <Content Include="page\html\js\jplayer\jplayer.playlist.min.js" />
+    <Content Include="page\html\js\jplayer\jquery.jplayer.js" />
+    <Content Include="page\html\js\jplayer\jquery.jplayer.swf" />
+    <Content Include="page\html\js\jquery-3.1.1.min.js" />
+    <Content Include="page\html\js\jquery.js" />
+    <Content Include="page\html\js\jquery.min.js" />
+    <Content Include="page\html\js\music.js" />
+    <Content Include="page\html\playlist.html" />
+    <Content Include="page\html\musicList.html" />
+    <Content Include="page\html\report.html" />
+    <Content Include="page\html\report\catalog.html" />
+    <Content Include="page\html\report\cover.html" />
+    <Content Include="page\html\report\explain.html" />
+    <Content Include="page\html\report\snps.html" />
+    <Content Include="page\html\useranswerd.html" />
+    <Resource Include="resource\img\recordRepo.png" />
+    <Resource Include="resource\img\relax_list.png" />
+    <Resource Include="resource\img\noVolume.png" />
+    <Resource Include="resource\img\1.jpg" />
+    <Resource Include="resource\img\playMode_1.png" />
+    <Resource Include="resource\img\playMode_1_1.png" />
+    <Resource Include="resource\img\playMode_2.png" />
+    <Resource Include="resource\img\playMode_2_1.png" />
+    <Resource Include="resource\img\playMode_3.png" />
+    <Resource Include="resource\img\playMode_3_1.png" />
+    <Resource Include="resource\img\playMode_4.png" />
+    <Resource Include="resource\img\playMode_4_1.png" />
+    <Resource Include="resource\img\volume.png" />
     <Content Include="resource\video\fuxi.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -432,9 +534,6 @@
       <Project>{15804010-95ee-40e9-9731-5503eaa75ed3}</Project>
       <Name>PsyHealth</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="page\html\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>结果解释</title>
+<link href="../css/common.css" rel="stylesheet" type="text/css">
+ <script type="text/javascript">
+    document.oncontextmenu = new Function("event.returnValue=false;");
+    document.onselectstart = new Function("event.returnValue=false;");
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+ </script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" id="test1"></script>
+    <script>
+        var srcc = "../js/config_" + GetQueryString("uid") + ".js";
+        $("#test1").attr("src", srcc);
+        $.getScript(srcc, function () {
+            var explains = result["report"]["personTestVerdictList"];
+            var htmlstr = "";
+            for (var t = 0; t<explains.length;t++)
+            {
+                if(t==0)
+                {
+                  htmlstr = htmlstr + "<h3>因子名称:</h3><p>" + explains[t].verdictName + "</p>\
+                   <h3>得分:</h3><p>" + explains[t].score + "</p>\
+                   <h3>得分解释:</h3><p>"+ explains[t].verdictDesc + "</p>\
+                   <h3>因子描述:</h3><p>"+ explains[t].proposal + "</p>";
+                }
+                else
+                {
+                   htmlstr = htmlstr + "<h3 style='padding-top:45px;'>因子名称:</h3><p>" + explains[t].verdictName + "</p>\
+                   <h3>得分:</h3><p>" + explains[t].score + "</p>\
+                   <h3>得分解释:</h3><p>"+explains[t].verdictDesc+"</p>\
+                   <h3>因子描述:</h3><p>"+explains[t].proposal+"</p>";
+               }
+            }
+            $("#epn_sug").html(htmlstr);
+        });
+    </script>
+</head>
+
+<body>
+
+<div class="cover_bg">
+    <div class="results">
+        <h1>结果解释</h1>        
+    </div>
+    <div style="overflow:auto; width:785px; height:751px; margin-top:30px;">
+    	<p style="padding-top:5px; text-align:center; color:#999;">本报告共计3页，每页面相对关联，建议一次浏览</p>
+        <div class="epn_sug" id="epn_sug">
+        </div>
+	</div>
+</div>
+
+</body>
+</html>

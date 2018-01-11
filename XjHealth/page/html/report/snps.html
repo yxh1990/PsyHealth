@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>量表简介</title>
+<link href="../css/common.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        document.oncontextmenu = new Function("event.returnValue=false;");
+        document.onselectstart = new Function("event.returnValue=false;");
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+   </script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" id="test1"></script>
+    <script>
+        var srcc = "../js/config_" + GetQueryString("uid") + ".js";
+        $("#test1").attr("src", srcc);
+        $.getScript(srcc, function () {
+            var userobj = result["report"];
+            $("#sname").html(userobj["scaleName"]);
+            $("#sdesc").html(userobj["scaleExplain"]);
+        });
+    </script>
+</head>
+
+<body>
+
+<div class="cover_bg">
+    <div class="results">
+        <h1>量表简介</h1>
+        <p style="padding-top:38px; text-align:center; color:#999;">本报告共计3页，每页面相对关联，建议一次浏览</p>
+    </div>
+    <div class="snps_ctn">
+    	<img src="../img/snps_img.png" />
+        <h3 id="sname"></h3>
+        <p id="sdesc"></p>
+    </div>
+</div>
+
+</body>
+</html>

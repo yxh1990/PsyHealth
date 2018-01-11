@@ -58,7 +58,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <DockPanel>
-                                <Button Foreground="#ffa200" Tag="{Binding resultId}" Content="[答卷]" Cursor="Hand" x:Name="btn_testAnswer" Click="btn_testAnswer_Click" Width="60" Height="30"  Style="{StaticResource TransparentButtonStyle}"></Button>
+                                <Button Foreground="#ffa200" Tag="{Binding resultId}" Uid="{Binding scaleTestDateTime}"  Content="[答卷]" Cursor="Hand"  Click="btn_testAnswer_Click" Width="60" Height="30"  Style="{StaticResource TransparentButtonStyle}"></Button>
                                 <Button Foreground="#ffa200" Tag="{Binding resultId}" Content="[测评报告]" Cursor="Hand" x:Name="btn_testReport" Click="btn_testReport_Click"  Width="100" Height="30"  Style="{StaticResource TransparentButtonStyle}"></Button>
                             </DockPanel>
                         </DataTemplate>
@@ -67,28 +67,29 @@
             </lib:PagingDataGrid.Columns>
         </lib:PagingDataGrid>
 
-        <StackPanel Canvas.Top="180" Canvas.Left="480" Panel.ZIndex="15" x:Name="grid_testreport" Visibility="Hidden">
-            <Image Source="/resource/img/recordRepo.png" Canvas.Top="120" Canvas.Left="420" Panel.ZIndex="15" Width="420" Height="542"></Image>
-            <Grid Width="300" Height="500">
-                <!--定义了两列-->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="100*"/>
-                </Grid.ColumnDefinitions>
-                <!--定义了八行-->
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="36"/>
-                    <RowDefinition Height="36"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" Grid.Column="0"  TextAlignment="Center" Text="11111："/>
-                <TextBlock Grid.Row="1" Grid.Column="0"  TextAlignment="Center" Text="222222："/>
-
-                <TextBlock Grid.Row="0" Grid.Column="1"  TextAlignment="Center" Text="555555"/>
-                <TextBlock Grid.Row="1" Grid.Column="1"  TextAlignment="Center" Text="88888888"/>
-            </Grid>
+        <StackPanel Canvas.Top="130" Canvas.Left="480" Panel.ZIndex="15" x:Name="grid_testreport" Visibility="Hidden">
+            <Canvas>
+                <Image Source="/resource/img/recordRepo.png" Panel.ZIndex="15"  Width="420" Height="542" />
+                <Label Style="{StaticResource trainTitle}" Panel.ZIndex="15" Canvas.Top="30" Canvas.Left="40">内容：</Label>
+                <Label Style="{StaticResource trainTitle}" Panel.ZIndex="15" Canvas.Top="30" Canvas.Left="140" x:Name="traincon"></Label>
+                <Label Style="{StaticResource trainTitle}" Panel.ZIndex="15" Canvas.Top="60" Canvas.Left="40">难度：</Label>
+                <Label Style="{StaticResource trainTitle}" Panel.ZIndex="15" Canvas.Top="60" Canvas.Left="140" x:Name="traindu"></Label>
+                <Label Style="{StaticResource trainTitle}" Panel.ZIndex="15" Canvas.Top="90" Canvas.Left="40">开始时间：</Label>
+                <Label Style="{StaticResource trainTitle}" Panel.ZIndex="15" Canvas.Top="90" Canvas.Left="140" x:Name="trainstartTime"></Label>
+                <Label Style="{StaticResource trainTitle}" Panel.ZIndex="15" Canvas.Top="120" Canvas.Left="40">结束时间：</Label>
+                <Label Style="{StaticResource trainTitle}" Panel.ZIndex="15" Canvas.Top="120" Canvas.Left="140" x:Name="trainendTime"></Label>
+                <locallib:ImageButton Panel.ZIndex="20" Canvas.Top="480" Canvas.Left="330"  Width="71" Height="29" ImgPath="/resource/img/user_exit.png" MouseOverImgPath="/resource/img/user_exit.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_guanbi" Cursor="Hand" Click="btn_guanbi_Click" />
+                <ScrollViewer Height="250" Width="350" HorizontalAlignment="Left" Panel.ZIndex="15" Canvas.Top="170" Canvas.Left="40" VerticalAlignment="Top">
+                    <ScrollViewer.Content>
+                        <TextBlock  Style="{StaticResource traindesc}" x:Name="txtcon">
+                        </TextBlock>
+                   </ScrollViewer.Content>
+                </ScrollViewer>
+              
+            </Canvas>
         </StackPanel>
 
+       
         <!--<Image Source="/resource/img/record_tab_bg2.png" Canvas.Top="625" Canvas.Left="900"  Width="275" Height="30" x:Name="btntoolbar1"></Image>-->
         <locallib:ImageButton  Canvas.Top="628" Canvas.Left="900"  Width="125" Height="25" ImgPath="/resource/img/record_tab_A.png" MouseOverImgPath="/resource/img/record_tab_A.png"  Template="{StaticResource ImageButtonTemplate}" x:Name="btn_cepin" Cursor="Hand"  Click="btn_cepin_Click"/>
 

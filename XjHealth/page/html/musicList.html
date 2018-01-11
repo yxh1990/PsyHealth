@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>音乐中心</title>
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+    <style>
+     .cd-pagination li
+      {
+        padding:5px;
+      }
+    </style>
+    <script type="text/javascript">
+    document.oncontextmenu=new Function("event.returnValue=false;");
+    document.onselectstart = new Function("event.returnValue=false;");
+    </script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/music.js"></script>
+    <script>
+        var pageIndex = 1;
+        var pageSize = 10;
+        var datalist = "";
+        var totalpage = 0;
+        var musicArray = [];
+        $(document).ready(function () {
+            datalist = reqin["flashChannelInfo"]["psyResourceList"];
+            showdata(pageIndex);
+            $("#onea").css("background", "#fff");
+            $("#onea").parent().siblings().children().css("background", "#ddd");
+        });
+
+        function listenmusic(url,aobj)
+        {
+            var stophtml="<img src='img/stop2.gif'/> 暂停";
+            var playhtml="<img src='img/listen.png'/> 试听";
+            var currenthtml = $(aobj).html();
+            if (currenthtml.indexOf("listen.png")>=0)
+            {
+              window.external.PlayMusic(url);
+              $("#tab1 .lia").each(function (index, element) {
+                  $(element).html(playhtml);
+              });
+              $(aobj).html(stophtml);
+           }
+           else
+           {
+               window.external.PauseMusic();
+               $(aobj).html(playhtml);
+           }
+        }
+
+        function changepage(pgindex, pg)
+        {
+            pageIndex = pgindex;
+            showdata(pageIndex);
+        }
+
+        function showdata(pgindex)
+        {
+            $("#reqinul").nextAll().remove();
+            var reqinstr = "";
+
+            var pageStart = (pgindex - 1) * pageSize;
+            var pageEnd = pgindex*pageSize>datalist.length?datalist.length:(pgindex*pageSize);
+            
+            for (var t = pageStart; t<pageEnd; t++) {
+                reqinstr = reqinstr + " <ul>\
+                              <li><input type='checkbox' name='chk_list' title='" + datalist[t].resourceTitle + "' value='" + datalist[t].thumbPath + "' /> " + datalist[t].resourceTitle + "</li>\
+                              <li style='float:right;'><a href='#' class='lia' onclick='listenmusic(\"" + datalist[t].thumbPath + "\",this)'><img src='img/listen.png'/> 试听</a></li>\
+                             </ul>";
+            }
+            $("#reqinul").after(reqinstr);
+
+            if (datalist.length / pageSize > parseInt(datalist.length / pageSize))
+            {
+                totalpage = parseInt(datalist.length/pageSize) + 1;
+            }
+            else
+            {
+                totalpage = parseInt(datalist.length/pageSize);
+            }
+
+            var pagehtmlstr = "";
+            for (var t = 0; t<totalpage; t++)
+            {
+                if (pgindex==t+1)
+                {
+                    pagehtmlstr = pagehtmlstr + "<li><a class='current' href='#" + t + "' onclick='changepage(" +parseInt(t + 1) + ",this)'>" + parseInt(t + 1) + "</a></li>";
+                }
+                else
+                {
+                    pagehtmlstr = pagehtmlstr + "<li><a href='#" + t + "' onclick='changepage(" +parseInt(t + 1) + ",this)'>" + parseInt(t + 1) + "</a></li>";
+                }
+            }
+            $("#pageul").html(pagehtmlstr);
+        }
+
+        function showtypedata(type,aobj)
+        {
+            pageIndex = 1;
+            if (type =="reqin")
+            {
+                datalist = reqin["flashChannelInfo"]["psyResourceList"];
+                showdata(pageIndex);
+            }
+            else if (type=="qinsu")
+            {
+                datalist = qinsu["flashChannelInfo"]["psyResourceList"];
+                showdata(pageIndex);
+            }
+            else if (type == "kuaile")
+            {
+                datalist = kuaile["flashChannelInfo"]["psyResourceList"];
+                showdata(pageIndex);
+            }
+            else if (type == "qinxin")
+            {
+                datalist = qinxin["flashChannelInfo"]["psyResourceList"];
+                showdata(pageIndex);
+            }
+            else if (type == "fangsong")
+            {
+                datalist = fansong["flashChannelInfo"]["psyResourceList"];
+                showdata(pageIndex);
+            }
+
+            $(aobj).css("background", "#fff");
+            $(aobj).parent().siblings().children().css("background", "#ddd");
+        }
+
+        function handlercheckall() {
+            var ischecked = document.getElementById("chk_all").checked;
+            var arrChk = $("input[name='chk_list']");
+            $(arrChk).each(function () {
+                this.checked = ischecked;
+            });
+        }
+
+        function gotoplaypage() {
+            var arrChk = $("input[name='chk_list']:checked");
+            var titles = "";
+            var urls = "";
+
+            if (arrChk.length > 0) //判读跳转到播放器页面前必须先勾选歌曲
+            {
+                $.each(arrChk,function(i,obj){
+                    titles = titles + obj.getAttribute("title") + "&";
+                    urls = urls + obj.value + "&";
+                });
+                window.external.ChangePage(titles,urls);
+            }
+            else
+            {
+                alert("请选择需要播放的歌曲!");
+            }
+        }
+    </script>
+</head>
+
+<body style="background:url(img/relax_list.png) no-repeat; height:500px;">
+    <div>
+        <div class="relax_music">
+            <ul id="tabs">
+                <li><a id="onea" href="#" title="tab1" onclick="showtypedata('reqin',this)">热情音乐</a></li>
+                <li><a href="#" title="tab1" onclick="showtypedata('qinsu',this)">倾诉音乐</a></li>
+                <li><a href="#" title="tab1" onclick="showtypedata('kuaile',this)">快乐音乐</a></li>
+                <li><a href="#" title="tab1" onclick="showtypedata('qinxin',this)">清心音乐</a></li>
+                <li><a href="#" title="tab1" onclick="showtypedata('fangsong',this)">放松音乐</a></li>
+            </ul>
+            <div id="content">
+                <div id="tab1">
+                    <ul style="border:0;">
+                        <li><input type="checkbox" style="margin-left:3px" name="chk_all" id="chk_all" onclick="handlercheckall()"/>全选</li>
+                        <li style="float:right;" id="reqinul">
+                           <a  href="#" onclick="gotoplaypage()">
+                               <img src="img/play.png">播放
+                           </a>
+                       </li>
+                    </ul>
+                    <nav role="navigation">
+                        <ul class="cd-pagination custom-buttons" style="border:0;padding-left:65px;margin-top:2px" id="pageul">
+                        </ul>
+                    </nav>
+                </div><!--tab1 end-->
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
